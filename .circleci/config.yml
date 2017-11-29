@@ -42,8 +42,8 @@ jobs:
           name: angular-test
           command: yarn ng test --watch=false
 
-  deployment:
-    production:
-      branch: master
-      heroku: 
-        appname: cheaper-tv
+deployment:
+  production:
+    branch: master
+    heroku: 
+      appname: cheaper-tv
