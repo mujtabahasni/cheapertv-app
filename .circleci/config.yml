@@ -42,8 +42,16 @@ jobs:
           name: angular-test
           command: yarn ng test --watch=false
 
-    deployment:
-      production:
-        branch: master
-        heroku: 
-          appname: cheaper-tv
+      - run:
+          name: Run setup script
+          command: bash .circleci/setup-heroku.sh
+          
+      - add_ssh_keys: 
+          fingerprints:
+            - "5a:4c:c3:e7:20:ae:d6:12:20:7e:4c:d9:f4:35:8b:5e"
+          
+      - deploy:
+          name: Deploy master branch to Heroku
+          command: |
+            heroku create $HEROKU_APP_NAME
+            git push heroku master
