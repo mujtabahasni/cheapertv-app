@@ -40,4 +40,4 @@ jobs:
       # run tests!
       - run: 
           name: angular-test
-          command: yarn ng test
+          command: yarn ng test --watch=false
