@@ -26,9 +26,7 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: npm -g install @angular/cli
-      
-      - run: npm install
+      - run: yarn install
 
       - save_cache:
           paths:
@@ -37,13 +35,13 @@ jobs:
 
       - run: 
           name: angular-build
-          command: ng build --aot -prod
+          command: yarn ng build --aot -prod
 
       - run: 
           name: angular-lint
-          command: ng lint
+          command: yarn ng lint
 
       # run tests!
       - run: 
           name: angular-test
-          command: ng test
+          command: yarn ng test
