@@ -34,10 +34,16 @@ jobs:
           command: yarn ng build --aot -prod --progress=false
 
       - run: 
-          name: angular-lint
+          name: anular-lint
           command: yarn ng lint
 
       # run tests!
       - run: 
           name: angular-test
           command: yarn ng test --watch=false
+
+  deployment:
+    production:
+      branch: master
+      heroku: 
+        appname: cheaper-tv
