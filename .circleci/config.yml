@@ -36,12 +36,12 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run: 
-        name: angular-build
-        command: ng build --aot -prod
+          name: angular-build
+          command: ng build --aot -prod
 
       - run: 
-        name: angular-lint
-        command: ng lint
+          name: angular-lint
+          command: ng lint
 
       # run tests!
       - run: 
