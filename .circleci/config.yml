@@ -31,7 +31,7 @@ jobs:
 
       - run: 
           name: angular-build
-          command: yarn ng build --aot -prod
+          command: yarn ng build --aot -prod --progress=false
 
       - run: 
           name: angular-lint
