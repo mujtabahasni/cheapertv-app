@@ -2,17 +2,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 
-import { AppComponent } from './app.component';
-
+import { AppContainer } from './app.container'
+import { TvShowsSearchViewComponent } from './tvshows';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppContainer,
+    TvShowsSearchViewComponent,
   ],
   imports: [
     BrowserModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppContainer]
 })
 export class AppModule { }
