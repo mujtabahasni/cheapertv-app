@@ -32,8 +32,9 @@ export interface TvShowSearchShows extends Action {
 }
 
 
-// Thunk style action creator:
-export function searchShows(query: string, tvdb: TvDbService) {
+// Thunk style action creator, return type is 'any' otherwise typescript IDEA
+// will compain its not of type Action:
+export function searchShows(query: string, tvdb: TvDbService): any {
   return (dispatch) => {
 
     // Dispatch SEARCH_SHOWS action to store, before making API call
@@ -45,7 +46,6 @@ export function searchShows(query: string, tvdb: TvDbService) {
     // Perform API call and if success, then dispatch SEARCH_SHOWS_SUCCESS action
     tvdb.search(query)
       .then((results) => {
-        console.log({'results': results});
         dispatch(searchSuccess(results));
       })
       .catch((error) => {
