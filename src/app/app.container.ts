@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'tv-app',
+  selector: 'app-root',
   templateUrl: './app.container.html'
 })
-export class AppContainer {
+export class AppContainerComponent {
   title = 'tvapp';
 }

@@ -2,9 +2,9 @@ import { Action } from 'redux';
 import { TvShowData } from './tvshows.models';
 import { TvDbService } from '../../core/tvdb.service';
 
-/** 
+/**
  * Actions key as enum types
- * 
+ *
  * Typescripts's enum is ideal for this purpose, vs constants.  Plus
  * we can use each enum value as a type specifier.  Combined with 'readonly' ensures
  * actions keys are immutable and contain the intended value.
@@ -51,7 +51,7 @@ export function searchShows(query: string, tvdb: TvDbService) {
       .catch((error) => {
         console.log({'err': error});
       });
-  }
+  };
 }
 export type ActionTypes =
   | TvShowSearchSuccess

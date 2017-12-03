@@ -6,13 +6,13 @@ import { NgReduxModule, NgRedux, DevToolsExtension } from '@angular-redux/store'
 import thunk from 'redux-thunk';
 
 import { TvDbService } from './core/tvdb.service';
-import { AppContainer } from './app.container'
+import { AppContainerComponent } from './app.container';
 import { TvShowsSearchViewComponent } from './tvshows';
 import { rootReducer, RootState, initialRootState } from './store';
 
 @NgModule({
   declarations: [
-    AppContainer,
+    AppContainerComponent,
     TvShowsSearchViewComponent,
   ],
   imports: [
@@ -20,9 +20,9 @@ import { rootReducer, RootState, initialRootState } from './store';
     NgReduxModule,
   ],
   providers: [TvDbService],
-  bootstrap: [AppContainer]
+  bootstrap: [AppContainerComponent],
 })
-export class AppModule { 
+export class AppModule {
   constructor(ngRedux: NgRedux<RootState>, devtools: DevToolsExtension) {
     if (devtools.isEnabled) {
       ngRedux.configureStore(rootReducer, initialRootState, [thunk], [devtools.enhancer()]);
