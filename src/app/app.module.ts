@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { NgReduxModule, NgRedux, DevToolsExtension } from '@angular-redux/store';
 import thunk from 'redux-thunk';
 
-import { TvDbService } from './core/tvdb.service';
+import { TvDbService } from './services';
 import { AppContainerComponent } from './app.container';
 import { TvShowsSearchViewComponent } from './tvshows';
 import { rootReducer, RootState, initialRootState } from './store';

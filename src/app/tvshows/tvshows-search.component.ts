@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { TvDbService } from '../core';
+import { TvDbService } from '../services';
 import { NgRedux, select } from '@angular-redux/store';
 import { RootState } from '../store';
 import { searchShows } from './store/tvshows.actions';
@@ -9,7 +9,10 @@ import { TvShowData } from './store/tvshows.models';
 @Component({
   selector: 'app-shows-search',
   template: `
-  <input type="text" (change)="search($event.target.value)">
+  <form action="javascript:void(0)">
+    <input type="text" (change)="search($event.target.value)" placeholder="Show Title">
+    <input type="submit">
+  </form>
   <div>is Fetching: {{ isFetching$ | async }} </div>
   <ul>
     <li *ngFor="let show of (tvshows$ | async)">{{ show.title }}</li>
