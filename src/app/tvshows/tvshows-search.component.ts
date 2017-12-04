@@ -13,7 +13,9 @@ import { TvShowData } from './store/tvshows.models';
     <input type="text" (change)="search($event.target.value)" placeholder="Show Title">
     <input type="submit">
   </form>
-  <div>is Fetching: {{ isFetching$ | async }} </div>
+  <div *ngIf="isFetching$ | async">
+    <progress value="80" max="100">fetching...</progress>
+  </div>
   <ul>
     <li *ngFor="let show of (tvshows$ | async)">{{ show.title }}</li>
   </ul>
