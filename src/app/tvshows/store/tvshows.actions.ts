@@ -21,7 +21,7 @@ export interface TvShowSearchSuccess extends Action {
   by: TvShowData[];
 }
 
-export const searchSuccess = (by: TvShowData[]) => ({
+export const searchSuccess = (by: TvShowData[]): TvShowSearchSuccess => ({
   type: TypeKeys.SEARCH_SHOWS_SUCCESS,
   by,
 });
