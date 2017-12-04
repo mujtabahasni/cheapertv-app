@@ -1,13 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NgModule } from '@angular/core';
+import { HttpModule, Http } from '@angular/http';
 
 import { NgReduxModule, NgRedux, DevToolsExtension } from '@angular-redux/store';
 import thunk from 'redux-thunk';
 
 import { TvDbService } from './services';
 import { AppContainerComponent } from './app.container';
-import { TvShowsSearchViewComponent } from './tvshows';
+import { TvShowsSearchViewComponent, TvShowSelectors } from './tvshows';
 import { rootReducer, RootState, initialRootState } from './store';
 
 @NgModule({
@@ -18,8 +19,9 @@ import { rootReducer, RootState, initialRootState } from './store';
   imports: [
     BrowserModule,
     NgReduxModule,
+    HttpModule,
   ],
-  providers: [TvDbService],
+  providers: [TvDbService, TvShowSelectors],
   bootstrap: [AppContainerComponent],
 })
 export class AppModule {
