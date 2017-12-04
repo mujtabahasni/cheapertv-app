@@ -10,25 +10,25 @@ import { TvDbService } from '../../services';
  * actions keys are immutable and contain the intended value.
  */
 
-export enum TypeKeys {
-  SEARCH_SHOWS = 'tvshows/search',
+export enum SearchActionTypes {
+  SEARCH_SHOWS_REQUESTED= 'tvshows/search',
   SEARCH_SHOWS_SUCCESS = 'tvshows/search success',
   SEARCH_SHOWS_FAILURE = 'tvshows/search failure',
 }
 
 export interface TvShowSearchSuccess extends Action {
-  readonly type: TypeKeys.SEARCH_SHOWS_SUCCESS;
-  by: TvShowData[];
+  readonly type: SearchActionTypes.SEARCH_SHOWS_SUCCESS;
+  payload: TvShowData[];
 }
 
-export const searchSuccess = (by: TvShowData[]): TvShowSearchSuccess => ({
-  type: TypeKeys.SEARCH_SHOWS_SUCCESS,
-  by,
+export const searchSuccess = (payload: TvShowData[]): TvShowSearchSuccess => ({
+  type: SearchActionTypes.SEARCH_SHOWS_SUCCESS,
+  payload,
 });
 
 export interface TvShowSearchShows extends Action {
-  readonly type: TypeKeys.SEARCH_SHOWS;
-  by: string;
+  readonly type: SearchActionTypes.SEARCH_SHOWS_REQUESTED;
+  payload: string;
 }
 
 
@@ -37,10 +37,10 @@ export interface TvShowSearchShows extends Action {
 export function searchShows(query: string, tvdb: TvDbService): any {
   return (dispatch) => {
 
-    // Dispatch SEARCH_SHOWS action to store, before making API call
+    // Dispatch SEARCH_SHOWS_REQUESTEDaction to store, before making API call
     dispatch({
-      type: TypeKeys.SEARCH_SHOWS,
-      by: query,
+      type: SearchActionTypes.SEARCH_SHOWS_REQUESTED,
+      payload: query,
     });
 
     // Perform API call and if success, then dispatch SEARCH_SHOWS_SUCCESS action

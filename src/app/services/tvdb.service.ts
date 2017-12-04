@@ -3,15 +3,15 @@ import { Observable } from 'rxjs/Observable';
 import { TvShowData } from '../tvshows/store/tvshows.models';
 
 const TVSHOWS: TvShowData[] = [
-  {title: 'WalkingDead'},
-  {title: 'Wheel of Forune'},
-  {title: 'The Walking Dead'},
-  {title: 'Rick & Morty'},
+  { title: 'WalkingDead' },
+  { title: 'Wheel of Forune' },
+  { title: 'The Walking Dead' },
+  { title: 'Rick & Morty' },
 ];
 
 @Injectable()
 export class TvDbService {
-  search(query: string): Promise<any> {
+  search(query: string): Promise<TvShowData[]> {
     const regexp = new RegExp(query, 'i');
     console.log(regexp);
     const results = [...TVSHOWS].filter((show) => regexp.test(show.title));

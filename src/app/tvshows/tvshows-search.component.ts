@@ -22,8 +22,8 @@ import { TvShowData } from './store/tvshows.models';
   `
 })
 export class TvShowsSearchViewComponent {
- @select(['tvshows', 'searchResults']) readonly tvshows$: Observable<TvShowData[]>;
- @select(['tvshows', 'isFetching']) readonly isFetching$: Observable<boolean>;
+  @select(['tvshows', 'searchResults']) readonly tvshows$: Observable<TvShowData[]>;
+  @select(['tvshows', 'isFetching']) readonly isFetching$: Observable<boolean>;
 
   constructor(private store: NgRedux<RootState>, private tvdb: TvDbService) {
   }

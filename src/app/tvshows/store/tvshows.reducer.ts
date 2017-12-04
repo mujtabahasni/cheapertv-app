@@ -1,4 +1,4 @@
-import { ActionTypes, TypeKeys } from './tvshows.actions';
+import { ActionTypes, SearchActionTypes } from './tvshows.actions';
 import { TvShowData } from './tvshows.models';
 
 export interface State {
@@ -13,15 +13,15 @@ export const initialState: State = {
 
 export function reducer(state: State = initialState, action: ActionTypes) {
   switch (action.type) {
-    case TypeKeys.SEARCH_SHOWS:
+    case SearchActionTypes.SEARCH_SHOWS_REQUESTED:
       return {
         isFetching: true,
         searchResults: []
       };
-    case TypeKeys.SEARCH_SHOWS_SUCCESS:
+    case SearchActionTypes.SEARCH_SHOWS_SUCCESS:
       return {
         isFetching: false,
-        searchResults: action.by
+        searchResults: action.payload,
       };
     default:
       return state;
