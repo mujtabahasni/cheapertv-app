@@ -36,7 +36,6 @@ export interface TvShowSearchShows extends Action {
 // will compain its not of type Action:
 export function searchShows(query: string, tvdb: TvDbService): any {
   return (dispatch) => {
-
     // Dispatch SEARCH_SHOWS_REQUESTEDaction to store, before making API call
     dispatch({
       type: SearchActionTypes.SEARCH_SHOWS_REQUESTED,
@@ -53,6 +52,7 @@ export function searchShows(query: string, tvdb: TvDbService): any {
       });
   };
 }
+
 export type ActionTypes =
   | TvShowSearchSuccess
   | TvShowSearchShows;
