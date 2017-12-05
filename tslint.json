@@ -24,6 +24,7 @@
       "spaces",
       2
     ],
+    "trailing-comma": true,
     "interface-over-type-literal": true,
     "label-position": true,
     "max-line-length": [
