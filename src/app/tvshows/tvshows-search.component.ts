@@ -17,9 +17,7 @@ import { TvShowData } from './store/tvshows.models';
   <div *ngIf="selectors.isFetching$ | async">
     <progress value="80" max="100">fetching...</progress>
   </div>
-  <ul>
-    <li *ngFor="let show of (selectors.tvshows$ | async)">{{ show.title }}</li>
-  </ul>
+  <app-tvshow-poster *ngFor="let show of (selectors.tvshows$ | async)" [show]="show"></app-tvshow-poster>
   `
 })
 export class TvShowsSearchViewComponent {
