@@ -17,8 +17,11 @@ export class TvDbService {
     return this.http
       .get(`${API_BASE_URL}/search/shows?q=${q}`)
       .map((response) => response.json())
+      .do((json) => console.log(json))
       .map((shows) => shows.map((item) => ({
         title: item.show.name,
+        summary: item.show.summary,
+        posterUrl: item.show.image ? item.show.image.medium : null
       })))
       .toPromise();
   }
