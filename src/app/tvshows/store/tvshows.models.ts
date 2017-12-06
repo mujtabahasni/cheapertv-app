@@ -3,5 +3,3 @@ export interface TvShowData {
   summary?: string;
   posterUrl?: string;
 }
-
-

@@ -7,9 +7,25 @@ import { TvShowData } from '../tvshows/store/tvshows.models';
 
 const API_BASE_URL = 'http://api.tvmaze.com';
 
+function getPlaceholderUrl(title: string) {
+  return `https://via.placeholder.com/210x295?text=${encodeURI(title)}`;
+}
+
+const itemToShowData = (item: TvDbResponseItem): TvShowData => ({
+  title: item.show.name,
+  summary: item.show.summary,
+  posterUrl: item.show.image ? item.show.image.medium : getPlaceholderUrl(item.show.name),
+});
+
+const responseToItems = (items: TvDbResponseItem[]): TvShowData[] => items.map(itemToShowData);
+
 interface TvDbResponseItem {
   show: {
     name: string;
+    summary: string;
+    image: {
+      medium: string;
+    }
   };
 }
 
@@ -25,9 +41,3 @@ export class TvDbService {
       .map(responseToItems);
   }
 }
-
-const responseToItems = (items: TvDbResponseItem[]): TvShowData[] => items.map(itemToShowData);
-
-const itemToShowData = (item: TvDbResponseItem): TvShowData => ({
-  title: item.show.name,
-});
