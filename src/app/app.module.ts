@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NgModule } from '@angular/core';
-import { HttpModule, Http } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { NgReduxModule, NgRedux, DevToolsExtension } from '@angular-redux/store';
 import thunk from 'redux-thunk';
@@ -20,7 +20,7 @@ import { rootReducer, RootState, initialRootState } from './store';
   imports: [
     BrowserModule,
     NgReduxModule,
-    HttpModule,
+    HttpClientModule,
   ],
   providers: [TvDbService, TvShowSelectors],
   bootstrap: [AppContainerComponent],
