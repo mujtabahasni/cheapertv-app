@@ -6,7 +6,7 @@ import { TvShowData } from './store/tvshows.models';
   template: `
   <table border="1" style="display:inline-block">
     <tr>
-      <td><h4>{{ show.title }}</h4></td>
+      <td align="center"><h4>{{ show.title }}</h4></td>
     </tr>
     <tr>
       <td><img [src]="show.posterUrl"></td>
