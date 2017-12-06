@@ -26,12 +26,12 @@ function getIsFetching(state: RootState) {
 }
 
 function sortShowsByTitle(a: TvShowData, b: TvShowData) {
-    if ( a.title.toLowerCase() < b.title.toLowerCase() ) {
-      return -1;
-    }else if ( a.title.toLowerCase() > b.title.toLowerCase() ) {
-      return 1;
-    } else {
-      return 0;
-    }
+  if ( a.title.toLowerCase() < b.title.toLowerCase() ) {
+    return -1;
+  }else if ( a.title.toLowerCase() > b.title.toLowerCase() ) {
+    return 1;
+  } else {
+    return 0;
   }
+}
 

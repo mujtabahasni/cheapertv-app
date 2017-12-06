@@ -44,10 +44,10 @@ export function searchShows(query: string, tvdb: TvDbService): any {
 
     // Perform API call and if success, then dispatch SEARCH_SHOWS_SUCCESS action
     tvdb.search(query)
-      .then((results) => {
+      .subscribe((results) => {
         dispatch(searchSuccess(results));
-      })
-      .catch((error) => {
+      },
+      (error) => {
         console.log({'err': error});
       });
   };
