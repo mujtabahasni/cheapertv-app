@@ -8,7 +8,7 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:8.6-browsers
-      
+
     working_directory: ~/cheapertv-app
 
     steps:
@@ -29,27 +29,27 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: 
+      - run:
           name: angular-build
           command: yarn ng build --aot -prod --progress=false
 
-      - run: 
+      - run:
           name: anular-lint
           command: yarn ng lint
 
       # run tests!
-      - run: 
+      - run:
           name: angular-test
           command: yarn ng test --watch=false
 
       - run:
           name: Run setup script
           command: bash .circleci/setup-heroku.sh
-          
-      - add_ssh_keys: 
+
+      - add_ssh_keys:
           fingerprints:
             - "5a:4c:c3:e7:20:ae:d6:12:20:7e:4c:d9:f4:35:8b:5e"
-          
+
       - deploy:
           name: Deploy master branch to Heroku
           command: |
