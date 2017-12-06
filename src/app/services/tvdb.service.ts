@@ -12,12 +12,11 @@ export class TvDbService {
 
   constructor(private http: Http) { }
 
-  search(query: string): Promise<any> {
+  search(query: string): Promise<TvShowData[]> {
     const q = encodeURI(query);
     return this.http
       .get(`${API_BASE_URL}/search/shows?q=${q}`)
       .map((response) => response.json())
-      .do((json) => console.log(json))
       .map((shows) => shows.map((item) => ({
         title: item.show.name,
       })))
