@@ -21,8 +21,12 @@ export class TvDbService {
       .map((shows) => shows.map((item) => ({
         title: item.show.name,
         summary: item.show.summary,
-        posterUrl: item.show.image ? item.show.image.medium : null
+        posterUrl: item.show.image ? item.show.image.medium : getPlaceholderUrl(item.show.name)
       })))
       .toPromise();
   }
+}
+
+function getPlaceholderUrl(title: string) {
+  return `https://via.placeholder.com/210x295?text=${encodeURI(title)}`;
 }
