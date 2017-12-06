@@ -13,6 +13,12 @@ interface TvDbResponseItem {
   };
 }
 
+const itemToShowData = (item: TvDbResponseItem): TvShowData => ({
+  title: item.show.name,
+});
+
+const responseToItems = (items: TvDbResponseItem[]): TvShowData[] => items.map(itemToShowData);
+
 @Injectable()
 export class TvDbService {
 
@@ -25,9 +31,3 @@ export class TvDbService {
       .map(responseToItems);
   }
 }
-
-const responseToItems = (items: TvDbResponseItem[]): TvShowData[] => items.map(itemToShowData);
-
-const itemToShowData = (item: TvDbResponseItem): TvShowData => ({
-  title: item.show.name,
-});
