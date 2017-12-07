@@ -1,3 +1,4 @@
+import * as R from 'ramda';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
@@ -21,10 +22,13 @@ function getPlaceholderUrl(title: string) {
   return `https://via.placeholder.com/210x295?text=${encodeURI(title)}`;
 }
 
+const posterUrl = (item: TvDbResponseItem): string =>
+  R.propOr(getPlaceholderUrl(item.show.name), 'medium', item.show.image);
+
 const itemToShowData = (item: TvDbResponseItem): TvShowData => ({
   title: item.show.name,
   summary: item.show.summary,
-  posterUrl: item.show.image ? item.show.image.medium : getPlaceholderUrl(item.show.name),
+  posterUrl: posterUrl(item)
 });
 
 const responseToItems = (items: TvDbResponseItem[]): TvShowData[] => items.map(itemToShowData);
