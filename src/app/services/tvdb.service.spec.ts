@@ -32,6 +32,7 @@ describe('TVDB API Service', () => {
         .subscribe((data: TvShowData[]) =>  {
           expect(data[0].title).toEqual(response[0].show.name);
           expect(data[0].summary).toEqual(response[0].show.summary);
+          expect(data[0].posterUrl).toBeDefined();
         });
 
       const req = mock.expectOne('http://api.tvmaze.com/search/shows?q=' + query);
