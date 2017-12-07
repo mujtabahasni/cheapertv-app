@@ -8,11 +8,11 @@ import { TvShowData } from '../tvshows/store/tvshows.models';
 
 const API_BASE_URL = 'http://api.tvmaze.com';
 
-interface TvDbResponseItem {
+export interface TvDbResponseItem {
   show: {
     name: string;
     summary: string;
-    image: {
+    image?: {
       medium: string;
     }
   };
