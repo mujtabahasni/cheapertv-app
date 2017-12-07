@@ -10,7 +10,7 @@ import { TvShowData } from './store/tvshows.models';
 @Component({
   selector: 'app-tvshows-search',
   template: `
-  <app-tvshows-search-input (search) = "search($event)" [fetching] = "selectors.isFetching | async"></app-tvshows-search-input>
+  <app-tvshows-search-input (search) = "search($event)" [fetching] = "selectors.isFetching$ | async"></app-tvshows-search-input>
   <app-tvshow-poster *ngFor = "let show of (selectors.tvshows$ | async)" [show]="show"></app-tvshow-poster>
   `
 })
