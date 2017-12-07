@@ -4,14 +4,14 @@ import { TvShowData } from './store/tvshows.models';
 @Component( {
   selector: 'app-tvshow-poster',
   template: `
-  <table border="1" style="display:inline-block">
-    <tr>
-      <td align="center"><h4>{{ show.title }}</h4></td>
-    </tr>
-    <tr>
-      <td><img [src]="show.posterUrl"></td>
-    </tr>
-  </table>
+  <div style="border:1px solid black; margin: 5px 5px; display: inline-block">
+    <div>
+      <span style="text-align: center"><h4>{{ show.title }}</h4></span>
+    </div>
+    <div>
+      <span><img [src]="show.posterUrl"></span>
+    </div>
+  </div>
   `,
 })
 export class TvShowsTvDataComponent {
