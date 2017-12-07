@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { TvShowData } from './tvshows.models';
 import { RootState } from '../../store';
 
+@Injectable()
 export class TvShowSelectors {
   @select(getSortedResults) public readonly tvshows$: Observable<TvShowData[]>;
   @select(getIsFetching) public readonly isFetching$: Observable<boolean>;
