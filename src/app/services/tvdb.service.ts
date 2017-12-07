@@ -29,6 +29,18 @@ interface TvDbResponseItem {
   };
 }
 
+function getPlaceholderUrl(title: string) {
+  return `https://via.placeholder.com/210x295?text=${encodeURI(title)}`;
+}
+
+const itemToShowData = (item: TvDbResponseItem): TvShowData => ({
+  title: item.show.name,
+  summary: item.show.summary,
+  posterUrl: item.show.image ? item.show.image.medium : getPlaceholderUrl(item.show.name),
+});
+
+const responseToItems = (items: TvDbResponseItem[]): TvShowData[] => items.map(itemToShowData);
+
 @Injectable()
 export class TvDbService {
 
