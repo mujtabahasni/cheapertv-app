@@ -31,8 +31,6 @@ const itemToShowData = (item: TvDbResponseItem): TvShowData => ({
   posterUrl: posterUrl(item)
 });
 
-const responseToItems = (items: TvDbResponseItem[]): TvShowData[] => items.map(itemToShowData);
-
 @Injectable()
 export class TvDbService {
 
@@ -42,6 +40,6 @@ export class TvDbService {
     const q = encodeURI(query);
     return this.http
       .get<TvDbResponseItem[]>(`${API_BASE_URL}/search/shows?q=${q}`)
-      .map(responseToItems);
+      .map(R.map(itemToShowData));
   }
 }
