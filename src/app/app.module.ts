@@ -30,7 +30,7 @@ import { rootReducer, RootState, initialRootState } from './store';
     NgReduxModule,
     HttpClientModule,
   ],
-  providers: [TvDbService, TvShowSelectors],
+  providers: [TvDbService],
   bootstrap: [AppContainerComponent],
 })
 export class AppModule {

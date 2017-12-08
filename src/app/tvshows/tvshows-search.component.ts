@@ -10,14 +10,16 @@ import { TvShowData } from './store/tvshows.models';
 @Component({
   selector: 'app-tvshows-search',
   template: `
-  <app-tvshows-search-input (search) = "search($event)" [fetching] = "selectors.isFetching$ | async"></app-tvshows-search-input>
-  <app-tvshow-poster *ngFor = "let show of (selectors.tvshows$ | async)" [show]="show"></app-tvshow-poster>
+  <app-tvshows-search-input (search) = "search($event)" [fetching] = "isFetching$ | async"></app-tvshows-search-input>
+  <app-tvshow-poster *ngFor = "let show of (tvshows$ | async)" [show]="show"></app-tvshow-poster>
   `
 })
 export class TvShowsSearchViewComponent {
 
+  readonly tvshows$ = TvShowSelectors.tvshows$;
+  readonly isFetching$ = TvShowSelectors.isFetching$;
+
   constructor (
-    public selectors: TvShowSelectors,
     private store: NgRedux<RootState>,
     private tvdb: TvDbService) {
   }
