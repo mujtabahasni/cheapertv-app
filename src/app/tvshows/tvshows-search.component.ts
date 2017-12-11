@@ -8,24 +8,18 @@ import { TvShowSelectors } from './store/tvshows.selectors';
 import { TvShowData } from './store/tvshows.models';
 
 @Component({
-  selector: 'app-shows-search',
+  selector: 'app-tvshows-search',
   template: `
-  <form action="javascript:void(0)">
-    <input type="text" (change)="search($event.target.value)" placeholder="Show Title">
-    <input type="submit">
-  </form>
-  <div *ngIf="selectors.isFetching$ | async">
-    <progress value="80" max="100">fetching...</progress>
-  </div>
-  <ul>
-    <li *ngFor="let show of (selectors.tvshows$ | async)">{{ show.title }}</li>
-  </ul>
+  <app-tvshows-search-input (search) = "search($event)" [fetching] = "isFetching$ | async"></app-tvshows-search-input>
+  <app-tvshow-poster *ngFor = "let show of (tvshows$ | async)" [show]="show"></app-tvshow-poster>
   `
 })
 export class TvShowsSearchViewComponent {
 
+  readonly tvshows$ = TvShowSelectors.tvshows$;
+  readonly isFetching$ = TvShowSelectors.isFetching$;
+
   constructor (
-    public selectors: TvShowSelectors,
     private store: NgRedux<RootState>,
     private tvdb: TvDbService) {
   }

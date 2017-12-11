@@ -8,20 +8,29 @@ import thunk from 'redux-thunk';
 
 import { TvDbService } from './services';
 import { AppContainerComponent } from './app.container';
-import { TvShowsSearchViewComponent, TvShowSelectors } from './tvshows';
+
+import {
+  TvShowsSearchViewComponent,
+  TvShowsSearchInputComponent,
+  TvShowsTvDataComponent,
+  TvShowSelectors
+} from './tvshows';
+
 import { rootReducer, RootState, initialRootState } from './store';
 
 @NgModule({
   declarations: [
     AppContainerComponent,
     TvShowsSearchViewComponent,
+    TvShowsSearchInputComponent,
+    TvShowsTvDataComponent,
   ],
   imports: [
     BrowserModule,
     NgReduxModule,
     HttpClientModule,
   ],
-  providers: [TvDbService, TvShowSelectors],
+  providers: [TvDbService],
   bootstrap: [AppContainerComponent],
 })
 export class AppModule {

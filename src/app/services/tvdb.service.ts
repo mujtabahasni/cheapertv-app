@@ -1,3 +1,4 @@
+import * as R from 'ramda';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
@@ -7,17 +8,28 @@ import { TvShowData } from '../tvshows/store/tvshows.models';
 
 const API_BASE_URL = 'http://api.tvmaze.com';
 
-interface TvDbResponseItem {
+export interface TvDbResponseItem {
   show: {
     name: string;
+    summary: string;
+    image?: {
+      medium: string;
+    }
   };
 }
 
+function getPlaceholderUrl(title: string) {
+  return `https://via.placeholder.com/210x295?text=${encodeURI(title)}`;
+}
+
+const posterUrl = (item: TvDbResponseItem): string =>
+  R.propOr(getPlaceholderUrl(item.show.name), 'medium', item.show.image);
+
 const itemToShowData = (item: TvDbResponseItem): TvShowData => ({
   title: item.show.name,
+  summary: item.show.summary,
+  posterUrl: posterUrl(item)
 });
-
-const responseToItems = (items: TvDbResponseItem[]): TvShowData[] => items.map(itemToShowData);
 
 @Injectable()
 export class TvDbService {
@@ -28,6 +40,6 @@ export class TvDbService {
     const q = encodeURI(query);
     return this.http
       .get<TvDbResponseItem[]>(`${API_BASE_URL}/search/shows?q=${q}`)
-      .map(responseToItems);
+      .map(R.map(itemToShowData));
   }
 }
