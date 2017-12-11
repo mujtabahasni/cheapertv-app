@@ -13,10 +13,12 @@ import {
   TvShowsSearchViewComponent,
   TvShowsSearchInputComponent,
   TvShowsTvDataComponent,
-  TvShowSelectors
+  TvShowDetailComponent,
+  TvShowSelectors,
 } from './tvshows';
 
 import { rootReducer, RootState, initialRootState } from './store';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -24,11 +26,13 @@ import { rootReducer, RootState, initialRootState } from './store';
     TvShowsSearchViewComponent,
     TvShowsSearchInputComponent,
     TvShowsTvDataComponent,
+    TvShowDetailComponent,
   ],
   imports: [
     BrowserModule,
     NgReduxModule,
     HttpClientModule,
+    AppRoutingModule,
   ],
   providers: [TvDbService],
   bootstrap: [AppContainerComponent],
