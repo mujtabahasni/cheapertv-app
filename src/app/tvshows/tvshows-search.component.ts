@@ -32,6 +32,7 @@ export class TvShowsSearchViewComponent {
 
   readonly tvshows$ = TvShowSelectors.tvshows$;
   readonly isFetching$ = TvShowSelectors.isFetching$;
+  readonly selectors = TvShowSelectors;
 
   constructor (
     private store: NgRedux<RootState>,

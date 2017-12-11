@@ -10,14 +10,14 @@ import { TvDbService } from '../services';
     <header>
       <h1>{{ show.title }}</h1>
     </header>
-    <img class="poster" [src]="show.posterUrl">
+    <img *ngIf="show.posterUrl" class="poster" [src]="show.posterUrl">
     <summary [innerHTML]="show.summary">
     </summary>
   </article>
   `
 })
 export class TvShowDetailComponent implements OnInit {
-  show: TvShowData = {id: 'noid', title: 'no title', summary: 'no summary', posterUrl: 'no image'};
+  show: TvShowData = {id: 'noid', title: 'no title', summary: 'no summary'};
   constructor (
     private route: ActivatedRoute,
     private tvdb: TvDbService,

@@ -5,9 +5,9 @@ import { TvShowData } from './tvshows.models';
 import { RootState } from '../../store';
 
 export class TvShowSelectors {
-  @select(getSortedResults) public readonly tvshows$: Observable<TvShowData[]>;
-  @select(getIsFetching) public readonly isFetching$: Observable<boolean>;
-  @select(getErrors) public readonly errors$: Observable<string[]>;
+  @select(getSortedResults) static readonly tvshows$: Observable<TvShowData[]>;
+  @select(getIsFetching) static readonly isFetching$: Observable<boolean>;
+  @select(getErrors) static readonly errors$: Observable<string[]>;
 }
 /*
  I have to define these as functions and then pass them to @select() due to a
