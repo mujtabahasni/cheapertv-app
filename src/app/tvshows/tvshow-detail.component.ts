@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { TvShowData } from './store/tvshows.models';
 import { TvDbService } from '../services';
 
@@ -8,22 +10,24 @@ import { TvDbService } from '../services';
     <header>
       <h1>{{ show.title }}</h1>
     </header>
-    <img class="poster" [src]="show.posterURL">
-    <summary>
-      {{ show.summary }}
+    <img class="poster" [src]="show.posterUrl">
+    <summary [innerHTML]="show.summary">
     </summary>
   </article>
   `
 })
 export class TvShowDetailComponent implements OnInit {
-  show: TvShowData = {title: 'no title', summary: 'no summary', posterUrl: 'no image'};
-  constructor(private tvdb: TvDbService) {}
+  show: TvShowData = {id: 'noid', title: 'no title', summary: 'no summary', posterUrl: 'no image'};
+  constructor (
+    private route: ActivatedRoute,
+    private tvdb: TvDbService,
+    private location: Location,
+  ) {}
 
   ngOnInit() {
-    this.tvdb.search('Rick and Morty')
+    const id = this.route.snapshot.paramMap.get('id');
+    this.tvdb.details(id)
       .toPromise()
-      .then( (shows: TvShowData[]) => {
-        this.show = shows[0];
-      });
+      .then( show => this.show = show );
   }
 }

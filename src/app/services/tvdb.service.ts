@@ -8,28 +8,37 @@ import { TvShowData } from '../tvshows/store/tvshows.models';
 
 const API_BASE_URL = 'http://api.tvmaze.com';
 
-export interface TvDbResponseItem {
-  show: {
-    name: string;
-    summary: string;
-    image?: {
-      medium: string;
-    }
+export interface TvDbShowItem {
+  id: string;
+  name: string;
+  summary: string;
+  image?: {
+    medium: string;
   };
+}
+
+export interface TvDbResponseItem {
+  show: TvDbShowItem;
 }
 
 function getPlaceholderUrl(title: string) {
   return `https://via.placeholder.com/210x295?text=${encodeURI(title)}`;
 }
 
-const posterUrl = (item: TvDbResponseItem): string =>
-  R.propOr(getPlaceholderUrl(item.show.name), 'medium', item.show.image);
+const posterUrl = (item: TvDbShowItem): string =>
+  R.propOr(getPlaceholderUrl(item.name), 'medium', item.image);
 
-const itemToShowData = (item: TvDbResponseItem): TvShowData => ({
-  title: item.show.name,
-  summary: item.show.summary,
+const itemToShowData = (item: TvDbShowItem): TvShowData => ({
+  id: item.id,
+  title: item.name,
+  summary: item.summary,
   posterUrl: posterUrl(item)
 });
+
+const responseToItems = R.compose(
+  R.map(itemToShowData),
+  R.map((item: TvDbResponseItem) => item.show),
+);
 
 @Injectable()
 export class TvDbService {
@@ -40,6 +49,12 @@ export class TvDbService {
     const q = encodeURI(query);
     return this.http
       .get<TvDbResponseItem[]>(`${API_BASE_URL}/search/shows?q=${q}`)
-      .map(R.map(itemToShowData));
+      .map(responseToItems);
+  }
+
+  details(id: string): Observable<TvShowData> {
+    return this.http
+      .get<TvDbShowItem>(`${API_BASE_URL}/shows/${id}`)
+      .map(itemToShowData);
   }
 }

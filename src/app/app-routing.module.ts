@@ -8,7 +8,7 @@ import {
 
 const routes: Routes = [
   {
-    path: 'details',
+    path: 'details/:id',
     component: TvShowDetailComponent,
   },
   {
