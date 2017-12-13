@@ -35,7 +35,6 @@ describe('TVDB API Service', () => {
   });
 
   function doResponse(res = response) {
-    console.log({flush: res});
       req.flush(res);
       mock.verify();
   }
