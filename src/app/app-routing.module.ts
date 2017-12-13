@@ -6,6 +6,8 @@ import {
   TvShowSelectors,
 } from './tvshows';
 
+import { ProfileFormViewComponent } from './profiles';
+
 const routes: Routes = [
   {
     path: 'details/:id',
@@ -14,6 +16,10 @@ const routes: Routes = [
   {
     path: '',
     component: TvShowsSearchViewComponent,
+  },
+  {
+    path: 'profile',
+    component: ProfileFormViewComponent,
   }
 ];
 
