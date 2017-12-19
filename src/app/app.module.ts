@@ -39,7 +39,7 @@ import { AppRoutingModule } from './app-routing.module';
 })
 export class AppModule {
   constructor(ngRedux: NgRedux<RootState>, devtools: DevToolsExtension) {
-    if (devtools.isEnabled) {
+    if (devtools.isEnabled()) {
       ngRedux.configureStore(rootReducer, initialRootState, [thunk], [devtools.enhancer()]);
     } else {
       ngRedux.configureStore(rootReducer, initialRootState, [thunk]);
