@@ -16,6 +16,16 @@ export enum SearchActionTypes {
   SEARCH_SHOWS_FAILURE = 'tvshows/search failure',
 }
 
+export interface TvShowSearchFailure extends Action {
+  readonly type: SearchActionTypes.SEARCH_SHOWS_FAILURE;
+  payload: string;
+}
+
+export const searchError = (payload: string) => ({
+  type: SearchActionTypes.SEARCH_SHOWS_FAILURE,
+  payload,
+});
+
 export interface TvShowSearchSuccess extends Action {
   readonly type: SearchActionTypes.SEARCH_SHOWS_SUCCESS;
   payload: TvShowData[];
@@ -36,7 +46,7 @@ export interface TvShowSearchShows extends Action {
 // will compain its not of type Action:
 export function searchShows(query: string, tvdb: TvDbService): any {
   return (dispatch) => {
-    // Dispatch SEARCH_SHOWS_REQUESTEDaction to store, before making API call
+    // Dispatch SEARCH_SHOWS_REQUESTED action to store, before making API call
     dispatch({
       type: SearchActionTypes.SEARCH_SHOWS_REQUESTED,
       payload: query,
@@ -45,14 +55,20 @@ export function searchShows(query: string, tvdb: TvDbService): any {
     // Perform API call and if success, then dispatch SEARCH_SHOWS_SUCCESS action
     tvdb.search(query)
       .subscribe((results) => {
-        dispatch(searchSuccess(results));
+        if (results.length > 0 ) {
+          dispatch(searchSuccess(results));
+        } else {
+          dispatch(searchError(`No results found for ${query}`));
+        }
+
       },
       (error) => {
-        console.log({'err': error});
+          dispatch(searchError(`A server error occured:  ${error}`));
       });
   };
 }
 
 export type ActionTypes =
   | TvShowSearchSuccess
-  | TvShowSearchShows;
+  | TvShowSearchShows
+  | TvShowSearchFailure;
