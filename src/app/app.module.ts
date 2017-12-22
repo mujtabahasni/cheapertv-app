@@ -13,10 +13,12 @@ import {
   TvShowsSearchViewComponent,
   TvShowsSearchInputComponent,
   TvShowsTvDataComponent,
-  TvShowSelectors
+  TvShowDetailComponent,
+  TvShowSelectors,
 } from './tvshows';
 
 import { rootReducer, RootState, initialRootState } from './store';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -24,18 +26,20 @@ import { rootReducer, RootState, initialRootState } from './store';
     TvShowsSearchViewComponent,
     TvShowsSearchInputComponent,
     TvShowsTvDataComponent,
+    TvShowDetailComponent,
   ],
   imports: [
     BrowserModule,
     NgReduxModule,
     HttpClientModule,
+    AppRoutingModule,
   ],
-  providers: [TvDbService],
+  providers: [TvDbService, TvShowSelectors],
   bootstrap: [AppContainerComponent],
 })
 export class AppModule {
   constructor(ngRedux: NgRedux<RootState>, devtools: DevToolsExtension) {
-    if (devtools.isEnabled) {
+    if (devtools.isEnabled()) {
       ngRedux.configureStore(rootReducer, initialRootState, [thunk], [devtools.enhancer()]);
     } else {
       ngRedux.configureStore(rootReducer, initialRootState, [thunk]);

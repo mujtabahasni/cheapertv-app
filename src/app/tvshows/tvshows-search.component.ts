@@ -19,19 +19,20 @@ import { TvShowData } from './store/tvshows.models';
     <progress value="80" max="100">fetching...</progress>
   </div>
 
+  <app-tvshow-poster *ngFor="let show of (selectors.tvshows$ | async)" [show]="show"></app-tvshow-poster>
+
   <div *ngIf="(selectors.errors$ | async).length !== 0">
     <h4>Error:</h4>
     <ul>
       <li *ngFor="let error of (selectors.errors$ | async)">{{ error }}</li>
     </ul>
   </div>
-
-  <ul>
-    <li *ngFor="let show of (selectors.tvshows$ | async)">{{ show.title }}</li>
-  </ul>
   `
 })
 export class TvShowsSearchViewComponent {
+
+  readonly tvshows$ = TvShowSelectors.tvshows$;
+  readonly isFetching$ = TvShowSelectors.isFetching$;
 
   readonly selectors = TvShowSelectors;
 
