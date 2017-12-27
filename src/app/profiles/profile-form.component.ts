@@ -13,11 +13,12 @@ export class ProfileFormComponent {
   @Input() cities: string[];
   @Input() home: string;
   @Input()
-    set membersNum(num: Number) {
-      this.membersRange = Array(num).fill(num).map((x, i) => i);
+    set membersNum(num: string) {
+      const size = Number(num);
+      this.membersRange = Array(size).fill(0).map((x, i) => i);
     }
-    get membersNum(): Number {
-      return this.membersRange.length;
+    get membersNum(): string {
+      return '' + this.membersRange.length;
     }
   membersRange = [];
 }
