@@ -8,6 +8,15 @@ import {
     ProfileFormComponent,
 } from './index';
 
+import {
+  ProfileFormServicesComponent,
+  ProfileFormDevicesComponent,
+  ProfileFormHomeComponent,
+  ProfileFormAntennaComponent,
+  ProfileFormMembersComponent,
+  ProfileFormSubmitComponent,
+} from './form-sections';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -17,6 +26,12 @@ import {
   declarations: [
     ProfileFormViewComponent,
     ProfileFormComponent,
+    ProfileFormServicesComponent,
+    ProfileFormDevicesComponent,
+    ProfileFormHomeComponent,
+    ProfileFormAntennaComponent,
+    ProfileFormMembersComponent,
+    ProfileFormSubmitComponent,
   ]
 })
 export class ProfilesModule {}
