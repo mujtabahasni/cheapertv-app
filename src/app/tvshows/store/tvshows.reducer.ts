@@ -3,6 +3,7 @@ import { TvShowData } from './tvshows.models';
 
 export interface State {
   isFetching: boolean;
+  searchQuery?: string;
   searchResults?: TvShowData[];
   errors?: string[];
 }
@@ -17,12 +18,15 @@ export function reducer(state: State = initialState, action: ActionTypes) {
   switch (action.type) {
     case SearchActionTypes.SEARCH_SHOWS_REQUESTED:
       return {
+        ...state,
         isFetching: true,
+        searchQuery: action.payload,
         searchResults: [],
         errors: [],
       };
     case SearchActionTypes.SEARCH_SHOWS_SUCCESS:
       return {
+        ...state,
         isFetching: false,
         searchResults: action.payload,
         errors: [],
