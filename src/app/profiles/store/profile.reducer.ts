@@ -1,3 +1,4 @@
+import { TvShowData } from '../../tvshows/store/tvshows.models';
 
 export interface ProfileFormState {
   tv: string;
@@ -25,10 +26,12 @@ export const initialProfileFormState: ProfileFormState = {
 
 export interface ProfileState {
   form: ProfileFormState;
+  selectedShows: TvShowData[];
 }
 
 export const initialProfileState = {
-  form: initialProfileFormState
+  form: initialProfileFormState,
+  selectedShows: [],
 };
 
 export function reducer (state = initialProfileState, action) {

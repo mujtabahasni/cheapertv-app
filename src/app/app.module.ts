@@ -11,7 +11,7 @@ import {
   TvShowsSearchViewComponent,
   TvShowsSearchInputComponent,
   TvShowsTvDataComponent,
-  TvShowDetailComponent,
+  TvShowDetailPageComponent,
   TvShowSelectors,
 } from './tvshows';
 
@@ -24,7 +24,7 @@ import { AppRoutingModule } from './app-routing.module';
     TvShowsSearchViewComponent,
     TvShowsSearchInputComponent,
     TvShowsTvDataComponent,
-    TvShowDetailComponent,
+    TvShowDetailPageComponent,
   ],
   imports: [
     BrowserModule,

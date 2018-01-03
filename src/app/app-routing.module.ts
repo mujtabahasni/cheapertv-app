@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 import {
   TvShowsSearchViewComponent,
-  TvShowDetailComponent,
+  TvShowDetailPageComponent,
   TvShowSelectors,
 } from './tvshows';
 
@@ -11,7 +11,7 @@ import { ProfileFormViewComponent } from './profiles';
 const routes: Routes = [
   {
     path: 'details/:id',
-    component: TvShowDetailComponent,
+    component: TvShowDetailPageComponent,
   },
   {
     path: '',
