@@ -33,8 +33,8 @@
     immutable "^3.8.1"
 
 "@angular-redux/store@^7.0.1":
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/@angular-redux/store/-/store-7.0.1.tgz#66ebfd3aa3d2fb1fdd0ec3f328c0dbde42d9856f"
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/@angular-redux/store/-/store-7.0.2.tgz#cd2d7f4a2de883631a290c32ab03db931f158682"
 
 "@angular/animations@^5.0.0":
   version "5.0.5"
@@ -4876,8 +4876,8 @@ run-queue@^1.0.0, run-queue@^1.0.3:
     aproba "^1.1.1"
 
 rxjs@^5.5.2:
-  version "5.5.5"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.5.5.tgz#e164f11d38eaf29f56f08c3447f74ff02dd84e97"
+  version "5.5.6"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.5.6.tgz#e31fb96d6fd2ff1fd84bcea8ae9c02d007179c02"
   dependencies:
     symbol-observable "1.0.1"
 

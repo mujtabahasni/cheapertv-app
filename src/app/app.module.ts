@@ -1,40 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import { TvDbService } from './services';
-import { AppContainerComponent } from './app.container';
-import { ReduxModule } from './redux/redux.module';
-import {
-  TvShowsSearchViewComponent,
-  TvShowsSearchInputComponent,
-  TvShowsTvDataComponent,
-  TvShowDetailPageComponent,
-  TvShowSelectors,
-} from './tvshows';
-
-import { ProfilesModule } from './profiles/profile.module';
+import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
+import { CoreModule } from './core/core.module';
+import { ReduxModule } from './redux/redux.module';
+
+import { AppContainerComponent } from './app.container';
 
 @NgModule({
-  declarations: [
-    AppContainerComponent,
-    TvShowsSearchViewComponent,
-    TvShowsSearchInputComponent,
-    TvShowsTvDataComponent,
-    TvShowDetailPageComponent,
-  ],
   imports: [
     BrowserModule,
-    FormsModule,
     HttpClientModule,
-    AppRoutingModule,
+    SharedModule,
+    CoreModule,
     ReduxModule,
-    ProfilesModule,
+    AppRoutingModule,
   ],
-  providers: [TvDbService, TvShowSelectors],
+  declarations: [AppContainerComponent],
   bootstrap: [AppContainerComponent],
 })
 export class AppModule { }
