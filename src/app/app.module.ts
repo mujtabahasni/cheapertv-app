@@ -10,6 +10,9 @@ import { ReduxModule } from './redux/redux.module';
 
 import { AppContainerComponent } from './app.container';
 
+import { ProfilesModule } from './profiles/profile.module';
+import { TvshowsModule } from './tvshows/tvshows.module';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -18,6 +21,8 @@ import { AppContainerComponent } from './app.container';
     CoreModule,
     ReduxModule,
     AppRoutingModule,
+    ProfilesModule,
+    TvshowsModule,
   ],
   declarations: [AppContainerComponent],
   bootstrap: [AppContainerComponent],

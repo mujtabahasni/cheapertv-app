@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProfilesModule } from '../profiles/profile.module';
-import { TvshowsModule } from '../tvshows/tvshows.module';
+import { SharedModule } from '../shared/shared.module';
 import { TvDbService } from '../services';
 
 @NgModule({
   imports: [
     CommonModule,
-    ProfilesModule,
-    TvshowsModule,
+    SharedModule,
   ],
 
   providers: [TvDbService]
