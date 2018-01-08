@@ -29,7 +29,7 @@ import { TvShowData } from './store/tvshows.models';
   </div>
   <div *ngIf="(selectors.tvshows$ | async).length > 0">
   <h4><i>Search Results for "{{ selectors.searchQuery$ | async }}"</i></h4>
-    <app-tvshows-poster *ngFor="let show of (selectors.tvshows$ | async)" [show]="show"></app-tvshows-poster>
+    <app-tvshow-poster *ngFor="let show of (selectors.tvshows$ | async)" [show]="show"></app-tvshow-poster>
   </div>
   `
 })

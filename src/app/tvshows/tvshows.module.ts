@@ -5,7 +5,7 @@ import {
   TvShowsSearchViewComponent,
   TvShowsSearchInputComponent,
   TvShowsTvDataComponent,
-  TvShowDetailComponent,
+  TvShowDetailPageComponent,
   TvShowSelectors,
 } from '../tvshows';
 
@@ -18,14 +18,14 @@ import {
     TvShowsSearchViewComponent,
     TvShowsSearchInputComponent,
     TvShowsTvDataComponent,
-    TvShowDetailComponent,
+    TvShowDetailPageComponent,
   ],
 
   exports: [
     TvShowsSearchViewComponent,
     TvShowsSearchInputComponent,
     TvShowsTvDataComponent,
-    TvShowDetailComponent,
+    TvShowDetailPageComponent,
   ],
 
   providers: [TvShowSelectors]
