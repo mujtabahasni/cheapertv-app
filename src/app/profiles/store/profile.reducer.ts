@@ -1,4 +1,5 @@
 import { TvShowData } from '../../tvshows/store/tvshows.models';
+import { ProfileActionTypes } from './profile.actions'
 
 export interface ProfileFormState {
   tv: string;
@@ -26,7 +27,7 @@ export const initialProfileFormState: ProfileFormState = {
 
 export interface ProfileState {
   form: ProfileFormState;
-  selectedShows: TvShowData[];
+  selectedShows: number[];
 }
 
 export const initialProfileState = {
@@ -35,5 +36,19 @@ export const initialProfileState = {
 };
 
 export function reducer (state = initialProfileState, action) {
-  return state;
+  switch (action.type) {
+    case ProfileActionTypes.SELECTED_SHOWS_ADD:
+
+      if (state.selectedShows.indexOf(action.payload) < 0) {
+        return {
+          ...state,
+          selectedShows: [...state.selectedShows, action.payload]
+        };
+      } else {
+        return state;
+      }
+
+      default:
+        return state;
+  }
 }
