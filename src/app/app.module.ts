@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,14 +14,13 @@ import { TvshowsModule } from './tvshows/tvshows.module';
 
 @NgModule({
   imports: [
-    BrowserModule,
-    HttpClientModule,
     SharedModule,
-    CoreModule,
+    BrowserModule,
     ReduxModule,
     AppRoutingModule,
     ProfilesModule,
     TvshowsModule,
+    CoreModule.forRoot(),
   ],
   declarations: [AppContainerComponent],
   bootstrap: [AppContainerComponent],

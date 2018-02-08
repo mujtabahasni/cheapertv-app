@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { TvDbService } from '../services';
+import { TvDbService } from '../core/services';
 import { NgRedux, select } from '@angular-redux/store';
 import { RootState } from '../store';
 import { searchShows } from './store/tvshows.actions';

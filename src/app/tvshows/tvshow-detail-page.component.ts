@@ -9,7 +9,7 @@ import { RootState } from '../store';
 import { ProfileSelectors } from '../profiles/store';
 import { addToSelectedShows} from '../profiles/store/profile.actions';
 import { TvShowData } from './store/tvshows.models';
-import { TvDbService } from '../services';
+import { TvDbService } from '../core/services';
 
 @Component({
   template: `

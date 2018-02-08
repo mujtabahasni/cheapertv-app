@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
-import { TvShowData } from '../tvshows/store/tvshows.models';
+import { TvShowData } from '../../tvshows/store/tvshows.models';
 
 const API_BASE_URL = 'http://api.tvmaze.com';
 

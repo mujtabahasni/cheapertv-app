@@ -1,6 +1,6 @@
 import { Action } from 'redux';
 import { TvShowData } from './tvshows.models';
-import { TvDbService } from '../../services';
+import { TvDbService } from '../../core/services';
 
 /**
  * Actions key as enum types

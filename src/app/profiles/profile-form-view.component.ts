@@ -7,8 +7,8 @@ import { ProfileSelectors } from './store/profile.selectors';
   selector: 'app-profile-form-view',
   template: `
     <app-profile-form
-      [home]="selectors.home | async"
-      [membersNum]="selectors.membersNum | async"
+      [home]="selectors.home$ | async"
+      [membersNum]="selectors.membersNum$ | async"
       [cities]="cities"
       [services]="services"
       ></app-profile-form>
