@@ -5,7 +5,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   selector: 'app-tvshows-search-input',
   template: `
   <form action="javascript:void(0)">
-    <input type="text" (change)="handleChange($event.target.value)" placeholder="Show Title">
+    <input type="text" (change)="handleChange($event.target.value)" placeholder="Enter a Show Title">
     <input type="submit">
   </form>
   <div *ngIf="fetching">
