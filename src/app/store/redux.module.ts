@@ -4,8 +4,7 @@ import { NgReduxModule, NgRedux, DevToolsExtension } from '@angular-redux/store'
 import { NgReduxFormModule, NgReduxFormConnectModule } from '@angular-redux/form';
 import thunk from 'redux-thunk';
 import { RootState, rootReducer, initialRootState } from '../store';
-
-import { PersistorService } from './persistor.service';
+import { PersistorService } from '.././core/services';
 
 @NgModule({
   imports: [
@@ -16,7 +15,6 @@ import { PersistorService } from './persistor.service';
     NgReduxFormModule,
     NgReduxFormConnectModule,
   ],
-  providers: [ PersistorService ],
 })
 
 export class ReduxModule {

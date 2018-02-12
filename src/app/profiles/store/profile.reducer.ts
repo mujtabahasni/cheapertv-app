@@ -48,6 +48,9 @@ export function reducer (state = initialProfileState, action) {
         return state;
       }
 
+      case ProfileActionTypes.PROFILE_CLEAR:
+        return initialProfileState;
+
       default:
         return state;
   }

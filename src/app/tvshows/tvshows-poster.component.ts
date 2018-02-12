@@ -16,6 +16,6 @@ import { TvShowData } from './store/tvshows.models';
   </a>
   `,
 })
-export class TvShowsTvDataComponent {
+export class TvShowsTvPosterComponent {
   @Input() show: TvShowData;
 }
