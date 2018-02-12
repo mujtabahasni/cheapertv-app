@@ -1,5 +1,5 @@
 import { TvShowData } from '../../tvshows/store/tvshows.models';
-import { ProfileActionTypes } from './profile.actions'
+import { ProfileActionTypes } from './profile.actions';
 
 export interface ProfileFormState {
   tv: string;
