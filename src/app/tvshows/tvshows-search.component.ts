@@ -28,12 +28,15 @@ import { promise } from 'selenium-webdriver';
       <li *ngFor="let error of (selectors.errors$ | async)">{{ error }}</li>
     </ul>
   </div>
-  <div *ngIf="(selectors.tvshows$ | async).length > 0">
+
+  <div class="tvshow-gallery" *ngIf="(selectors.tvshows$ | async).length > 0">
   <h4><i>Search Results for "{{ selectors.searchQuery$ | async }}"</i></h4>
     <app-tvshow-poster *ngFor="let show of (selectors.tvshows$ | async)" [show]="show"></app-tvshow-poster>
   </div>
   <hr>
-  <app-tvshows-selected [selectedShows] = "selectedShows" ></app-tvshows-selected>
+  <div class="tvshow-gallery">
+    <app-tvshows-selected [selectedShows] = "selectedShows" ></app-tvshows-selected>
+   </div>
   `
 })
 export class TvShowsSearchViewComponent implements OnInit {
@@ -50,7 +53,7 @@ export class TvShowsSearchViewComponent implements OnInit {
 
   ngOnInit() {
     ProfileSelectors.selectedShows$.subscribe(selectedIds => {
-      const observables = selectedIds.map(id => this.tvdb.details(String(id));
+      const observables = selectedIds.map(id => this.tvdb.details(String(id)));
       combineLatest(observables)
         .subscribe((selectedShows) => {
           this.selectedShows = selectedShows;
