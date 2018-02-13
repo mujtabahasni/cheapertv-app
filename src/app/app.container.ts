@@ -14,7 +14,7 @@ export class AppContainerComponent {
 
   constructor(public store: NgRedux<RootState>, public storage: PersistorService) { }
 
-  flush() {
+  purge() {
     this.store.dispatch( clearProfile(this.storage) );
   }
 }

@@ -1,5 +1,6 @@
 import { TvShowData } from '../../tvshows/store/tvshows.models';
 import { ProfileActionTypes } from './profile.actions';
+import { without } from 'ramda';
 
 export interface ProfileFormState {
   tv: string;
@@ -42,7 +43,18 @@ export function reducer (state = initialProfileState, action) {
       if (state.selectedShows.indexOf(action.payload) < 0) {
         return {
           ...state,
-          selectedShows: [...state.selectedShows, action.payload]
+          selectedShows: [...state.selectedShows, ...action.payload]
+        };
+      } else {
+        return state;
+      }
+
+    case ProfileActionTypes.SELECTED_SHOWS_DELETE:
+
+      if (state.selectedShows.indexOf(action.payload) < 0) {
+        return {
+          ...state,
+          selectedShows: without(action.payload, state.selectedShows)
         };
       } else {
         return state;

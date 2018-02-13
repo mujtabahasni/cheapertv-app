@@ -6,11 +6,17 @@ import { PersistorService } from '../../core/services';
 export enum ProfileActionTypes {
   PROFILE_CLEAR = 'profile/clear',
   SELECTED_SHOWS_ADD = 'profile/add',
+  SELECTED_SHOWS_DELETE = 'profile/delete',
 }
 
 export interface SelectedShowsAdd extends Action {
   type: ProfileActionTypes;
-  payload: number;
+  payload: number[];
+}
+
+export interface SelectedShowsDelete extends Action {
+  type: ProfileActionTypes;
+  payload: number[];
 }
 
 export interface ProfileClear extends Action {
@@ -18,17 +24,18 @@ export interface ProfileClear extends Action {
   payload: boolean;
 }
 
-export const addToSelectedShows = (payload: number): SelectedShowsAdd => ({
+export const addToSelectedShows = (payload: number[]): SelectedShowsAdd => ({
   type: ProfileActionTypes.SELECTED_SHOWS_ADD,
+  payload: payload,
+});
+
+export const removeFromSelectedShows = (payload: number[]): SelectedShowsDelete => ({
+  type: ProfileActionTypes.SELECTED_SHOWS_DELETE,
   payload: payload,
 });
 
 export const clearProfile = (storage: PersistorService): any => {
   return (dispatch) => {
-    dispatch({
-      type: ProfileActionTypes.PROFILE_CLEAR,
-      payload: true,
-     });
      storage.purge();
   };
 };

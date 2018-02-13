@@ -7,7 +7,7 @@ import { indexOf } from 'ramda';
 
 import { RootState } from '../store';
 import { ProfileSelectors } from '../profiles/store';
-import { addToSelectedShows} from '../profiles/store/profile.actions';
+import { addToSelectedShows, removeFromSelectedShows } from '../profiles/store/profile.actions';
 import { TvShowData } from './store/tvshows.models';
 import { TvDbService } from '../core/services';
 
@@ -23,7 +23,11 @@ import { TvDbService } from '../core/services';
         *ngIf="isShowSelected === false; else delete"
         (click)="handleAddButton(show.id)" class="add"
         >Add</button>
-      <ng-template #delete><i>Added to profile</i></ng-template>
+      <ng-template #delete>
+        <button
+          (click)="handleDeleteButton(show.id)" class="delete"
+          >Delete</button>
+       </ng-template>
     </div>
     <div>
       <a routerLink="/">Go Back</a>
@@ -57,6 +61,10 @@ export class TvShowDetailPageComponent implements OnInit {
   }
 
   handleAddButton(showId) {
-    this.store.dispatch(addToSelectedShows(showId));
+    this.store.dispatch(addToSelectedShows([showId]));
+  }
+
+  handleDeleteButton(showId) {
+    this.store.dispatch(removeFromSelectedShows([showId]));
   }
 }
