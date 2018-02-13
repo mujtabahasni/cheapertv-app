@@ -5,6 +5,7 @@ import {
   TvShowsSearchViewComponent,
   TvShowsSearchInputComponent,
   TvShowsTvPosterComponent,
+  TvShowsSelectedViewComponent,
   TvShowDetailPageComponent,
   TvShowSelectors,
 } from '../tvshows';
@@ -18,6 +19,7 @@ import {
     TvShowsSearchViewComponent,
     TvShowsSearchInputComponent,
     TvShowsTvPosterComponent,
+    TvShowsSelectedViewComponent,
     TvShowDetailPageComponent,
   ],
 

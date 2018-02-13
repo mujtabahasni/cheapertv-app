@@ -1,11 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { combineLatest } from 'rxjs/observable/combineLatest';
+
 import { TvDbService } from '../core/services';
 import { NgRedux, select } from '@angular-redux/store';
 import { RootState } from '../store';
 import { searchShows } from './store/tvshows.actions';
 import { TvShowSelectors } from './store/tvshows.selectors';
+import { ProfileSelectors } from '../profiles/store';
 import { TvShowData } from './store/tvshows.models';
+import { promise } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-tvshows-search',
@@ -28,20 +32,31 @@ import { TvShowData } from './store/tvshows.models';
   <h4><i>Search Results for "{{ selectors.searchQuery$ | async }}"</i></h4>
     <app-tvshow-poster *ngFor="let show of (selectors.tvshows$ | async)" [show]="show"></app-tvshow-poster>
   </div>
+  <hr>
+  <app-tvshows-selected [selectedShows] = "selectedShows" ></app-tvshows-selected>
   `
 })
-export class TvShowsSearchViewComponent {
+export class TvShowsSearchViewComponent implements OnInit {
 
   readonly tvshows$ = TvShowSelectors.tvshows$;
   readonly isFetching$ = TvShowSelectors.isFetching$;
 
   readonly selectors = TvShowSelectors;
-
-  constructor (
+  selectedShows$: Observable<TvShowData[]>;
+  selectedShows: TvShowData[];
+  constructor(
     private store: NgRedux<RootState>,
-    private tvdb: TvDbService) {
-  }
+    private tvdb: TvDbService) {}
 
+  ngOnInit() {
+    ProfileSelectors.selectedShows$.subscribe(selectedIds => {
+      const observables = selectedIds.map(id => this.tvdb.details(String(id));
+      combineLatest(observables)
+        .subscribe((selectedShows) => {
+          this.selectedShows = selectedShows;
+        });
+    });
+  }
   search(query) {
    this.store.dispatch(searchShows(query, this.tvdb));
   }
