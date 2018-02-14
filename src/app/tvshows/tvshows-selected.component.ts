@@ -13,7 +13,6 @@ import { Profile } from 'selenium-webdriver/firefox';
   selector: 'app-tvshows-selected',
   template: `
   <div *ngIf="selectedShows.length > 0">
-  <h4><i>Selected Shows</i></h4>
     <app-tvshow-poster *ngFor="let show of selectedShows" [show]="show"></app-tvshow-poster>
   </div>
   `

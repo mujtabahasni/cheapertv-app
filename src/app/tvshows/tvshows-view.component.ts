@@ -12,34 +12,28 @@ import { TvShowData } from './store/tvshows.models';
 import { promise } from 'selenium-webdriver';
 
 @Component({
-  selector: 'app-tvshows-search',
+  selector: 'app-tvshows-view',
   template: `
-  <form action="javascript:void(0)">
-    <input type="text" (change)="search($event.target.value)" placeholder="Show Title">
-    <input type="submit">
-  </form>
-  <div *ngIf="selectors.isFetching$ | async">
-    <progress value="80" max="100">fetching...</progress>
-  </div>
-
-  <div *ngIf="(selectors.errors$ | async).length !== 0">
-    <h4>Error:</h4>
-    <ul>
-      <li *ngFor="let error of (selectors.errors$ | async)">{{ error }}</li>
-    </ul>
-  </div>
-
-  <div class="tvshow-gallery" *ngIf="(selectors.tvshows$ | async).length > 0">
-  <h4><i>Search Results for "{{ selectors.searchQuery$ | async }}"</i></h4>
+  <app-tvshows-search-input
+    [fetching] = "selectors.isFetching$ | async"
+    [errors] = "selectors.errors$ | async"
+    (search) = "search($event)"
+    ></app-tvshows-search-input>
+    <h4><i>Search Results for "{{ selectors.searchQuery$ | async }}"</i></h4>
+  <div class="vh-50 w-100 overflow-x-scroll" *ngIf="(selectors.tvshows$ | async).length > 0">
+   <div class="h-50 nowrap justify">
     <app-tvshow-poster *ngFor="let show of (selectors.tvshows$ | async)" [show]="show"></app-tvshow-poster>
+   </div>
   </div>
   <hr>
-  <div class="tvshow-gallery">
+  <h4><i>Selected Shows</i></h4>
+  <div class="vh-50 w-100 overflow-x-scroll">
+   <div class="h-50 nowrap">
     <app-tvshows-selected [selectedShows] = "selectedShows" ></app-tvshows-selected>
    </div>
   `
 })
-export class TvShowsSearchViewComponent implements OnInit {
+export class TvShowsViewComponent implements OnInit {
 
   readonly tvshows$ = TvShowSelectors.tvshows$;
   readonly isFetching$ = TvShowSelectors.isFetching$;

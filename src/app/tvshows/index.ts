@@ -1,4 +1,4 @@
-export * from './tvshows-search.component';
+export * from './tvshows-view.component';
 export * from './tvshows-poster.component';
 export * from './tvshows-selected.component';
 export * from './tvshows-search-input.component';

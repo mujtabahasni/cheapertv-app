@@ -3,6 +3,12 @@
   font-family: sans-serif;
 }
 
+html {
+  height:100vh;
+}
+body {
+  min-height:100vh;
+}
 button {
   font-size:1.3em;
   border: 1px solid gray;
