@@ -17,7 +17,7 @@ import { rootEpic } from './root.epic';
     NgReduxFormConnectModule,
   ],
 })
-export class ReduxModule {
+export class StoreModule {
   constructor(
     ngRedux: NgRedux<RootState>,
     persistor: PersistorService,
