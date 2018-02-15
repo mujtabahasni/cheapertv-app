@@ -68,7 +68,7 @@ export function searchShows(query: string, tvdb: TvDbService): any {
   };
 }
 
-export type ActionTypes =
+export type TvShowActions=
   | TvShowSearchSuccess
   | TvShowSearchShows
   | TvShowSearchFailure;
