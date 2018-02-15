@@ -5,6 +5,7 @@ import { PersistorService } from '../../core/services';
 
 export enum ProfileActionTypes {
   PROFILE_CLEAR = 'profile/clear',
+  PROFILE_CLEARED = 'profile/cleared',
   SELECTED_SHOWS_ADD = 'profile/add',
   SELECTED_SHOWS_DELETE = 'profile/delete',
 }
@@ -20,6 +21,11 @@ export interface SelectedShowsDelete extends Action {
 }
 
 export interface ProfileClear extends Action {
+  type: ProfileActionTypes;
+  payload: boolean;
+}
+
+export interface ProfileCleared extends Action {
   type: ProfileActionTypes;
   payload: boolean;
 }
@@ -40,3 +46,6 @@ export const clearProfile = (storage: PersistorService): any => {
   };
 };
 
+export const clearedProfile = () => ({
+  type: ProfileActionTypes.PROFILE_CLEARED,
+});
