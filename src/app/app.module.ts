@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
-import { ReduxModule } from './store/redux.module';
+import { StoreModule } from './store/redux.module';
 
 import { AppContainerComponent } from './app.container';
 
@@ -16,7 +16,7 @@ import { TvshowsModule } from './tvshows/tvshows.module';
   imports: [
     SharedModule,
     BrowserModule,
-    ReduxModule,
+    StoreModule,
     AppRoutingModule,
     ProfilesModule,
     TvshowsModule,

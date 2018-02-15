@@ -17,7 +17,7 @@ import { PersistorService } from '.././core/services';
   ],
 })
 
-export class ReduxModule {
+export class StoreModule {
   constructor(ngRedux: NgRedux<RootState>, persistor: PersistorService, devtools: DevToolsExtension) {
 
     let store: Store<any>;
