@@ -17,7 +17,6 @@ import { rootEpic } from './root.epic';
     NgReduxFormConnectModule,
   ],
 })
-
 export class ReduxModule {
   constructor(
     ngRedux: NgRedux<RootState>,

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 import {
-  TvShowsSearchViewComponent,
+  TvShowsViewComponent,
   TvShowDetailPageComponent,
   TvShowSelectors,
 } from './tvshows';
@@ -15,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: TvShowsSearchViewComponent,
+    component: TvShowsViewComponent,
   },
   {
     path: 'profile',
