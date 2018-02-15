@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import {
-  TvShowsSearchViewComponent,
+  TvShowsViewComponent,
   TvShowsSearchInputComponent,
   TvShowsTvPosterComponent,
+  TvShowsSelectedViewComponent,
   TvShowDetailPageComponent,
   TvShowSelectors,
 } from '../tvshows';
@@ -15,14 +16,15 @@ import {
     RouterModule,
   ],
   declarations: [
-    TvShowsSearchViewComponent,
+    TvShowsViewComponent,
     TvShowsSearchInputComponent,
     TvShowsTvPosterComponent,
+    TvShowsSelectedViewComponent,
     TvShowDetailPageComponent,
   ],
 
   exports: [
-    TvShowsSearchViewComponent,
+    TvShowsViewComponent,
     TvShowsSearchInputComponent,
     TvShowsTvPosterComponent,
     TvShowDetailPageComponent,
