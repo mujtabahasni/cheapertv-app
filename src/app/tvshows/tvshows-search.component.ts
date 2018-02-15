@@ -37,12 +37,9 @@ export class TvShowsSearchViewComponent {
 
   readonly selectors = TvShowSelectors;
 
-  constructor (
-    private store: NgRedux<RootState>,
-    private tvdb: TvDbService) {
-  }
+  constructor (private store: NgRedux<RootState>) {}
 
   search(query) {
-   this.store.dispatch(searchShows(query, this.tvdb));
+   this.store.dispatch(searchShows(query));
   }
 }

@@ -2,6 +2,11 @@ import { combineReducers } from 'redux';
 import { composeReducers, defaultFormReducer } from '@angular-redux/form';
 import * as tvshows from '../tvshows';
 import * as profiles from '../profiles';
+import { ProfileActions } from '../profiles/store';
+
+export type RootAction =
+  | tvshows.TvShowActions
+  | ProfileActions;
 
 export interface RootState {
   tvshows: tvshows.State;

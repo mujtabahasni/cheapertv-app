@@ -30,7 +30,7 @@ export interface ProfileCleared extends Action {
   payload: boolean;
 }
 
-export type ActionTypes =
+export type ProfileActions =
   | SelectedShowsAdd
   | SelectedShowsDelete
   | ProfileClear
@@ -54,5 +54,5 @@ export const clearProfile = (storage: PersistorService): any => {
 
 export const clearedProfile = (): ProfileCleared => ({
   type: ProfileActionTypes.PROFILE_CLEARED,
-  payload: true;
+  payload: true,
 });
