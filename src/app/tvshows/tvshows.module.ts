@@ -4,8 +4,8 @@ import { RouterModule } from '@angular/router';
 import {
   TvShowsSearchViewComponent,
   TvShowsSearchInputComponent,
-  TvShowsTvDataComponent,
-  TvShowDetailComponent,
+  TvShowsTvPosterComponent,
+  TvShowDetailPageComponent,
   TvShowSelectors,
 } from '../tvshows';
 
@@ -17,15 +17,15 @@ import {
   declarations: [
     TvShowsSearchViewComponent,
     TvShowsSearchInputComponent,
-    TvShowsTvDataComponent,
-    TvShowDetailComponent,
+    TvShowsTvPosterComponent,
+    TvShowDetailPageComponent,
   ],
 
   exports: [
     TvShowsSearchViewComponent,
     TvShowsSearchInputComponent,
-    TvShowsTvDataComponent,
-    TvShowDetailComponent,
+    TvShowsTvPosterComponent,
+    TvShowDetailPageComponent,
   ],
 
   providers: [TvShowSelectors]

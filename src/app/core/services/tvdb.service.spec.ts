@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule, TestRequest } from '@angular/common/http/testing';
 import { TvDbService, TvDbResponseItem, TvDbShowItem } from './tvdb.service';
 import { HttpTestingController } from '@angular/common/http/testing';
-import { TvShowData } from '../tvshows/store/tvshows.models';
-import { searchShows } from '../tvshows/index';
+import { TvShowData } from '../../tvshows/store/tvshows.models';
+import { searchShows } from '../../tvshows/index';
 import { read } from 'fs';
 import { dissoc } from 'ramda';
 
