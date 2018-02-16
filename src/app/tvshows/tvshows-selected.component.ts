@@ -12,7 +12,7 @@ import { Profile } from 'selenium-webdriver/firefox';
 @Component({
   selector: 'app-tvshows-selected',
   template: `
-  <div *ngIf="selectedShows.length > 0">
+  <div *ngIf="selectedShows && selectedShows.length > 0">
     <app-tvshow-poster *ngFor="let show of selectedShows" [show]="show"></app-tvshow-poster>
   </div>
   `

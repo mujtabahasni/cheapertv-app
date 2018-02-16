@@ -2,6 +2,7 @@ import { Action } from 'redux';
 import { ProfileFormAntennaComponent } from '../form-sections/index';
 
 import { PersistorService } from '../../core/services';
+import { Profile } from 'selenium-webdriver/firefox';
 
 export enum ProfileActionTypes {
   PROFILE_CLEAR = 'profile/clear',
@@ -46,11 +47,10 @@ export const removeFromSelectedShows = (payload: number[]): SelectedShowsDelete 
   payload: payload,
 });
 
-export const clearProfile = (storage: PersistorService): any => {
-  return (dispatch) => {
-     storage.purge();
-  };
-};
+export const clearProfile = (): ProfileClear => ({
+  type: ProfileActionTypes.PROFILE_CLEAR,
+  payload: true,
+});
 
 export const clearedProfile = (): ProfileCleared => ({
   type: ProfileActionTypes.PROFILE_CLEARED,

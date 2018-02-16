@@ -7,14 +7,13 @@ import { Epic } from 'redux-observable';
 import { RootState } from '../../store/index';
 import { ProfileActions, ProfileActionTypes, clearedProfile } from './profile.actions';
 import { PersistorService } from '../../core/services';
-import { Profile } from 'selenium-webdriver/firefox';
 
 export const clearProfile: Epic<ProfileActions, RootState> =
   (action$, store, { persistor }: {persistor: PersistorService }) =>
     action$.ofType<ProfileActions>(ProfileActionTypes.PROFILE_CLEAR)
-      .switchMap((action, q) => {
+      .map((action, q) => {
         persistor.purge();
-        return Observable.of(clearedProfile());
+        return clearedProfile();
       });
 
 
