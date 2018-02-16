@@ -11,9 +11,7 @@ import { PersistorService } from '../../core/services';
 export const clearProfile: Epic<ProfileActions, RootState> =
   (action$, store, { persistor }: {persistor: PersistorService }) =>
     action$.ofType<ProfileActions>(ProfileActionTypes.PROFILE_CLEAR)
-      .map((action, q) => {
-        persistor.purge();
+      .do(() => persistor.purge())
+      .map(() => {
         return clearedProfile();
       });
-
-
