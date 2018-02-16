@@ -1,6 +1,5 @@
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/Observable/of';
 import { Store } from 'redux';
 import { Epic } from 'redux-observable';
 
