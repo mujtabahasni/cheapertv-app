@@ -9,6 +9,7 @@ import { StoreModule } from './store/store.module';
 
 import { AppContainerComponent } from './app.container';
 
+import { MaterialUiModule } from './material-ui/material-ui.module';
 import { ProfilesModule } from './profiles/profile.module';
 import { TvshowsModule } from './tvshows/tvshows.module';
 
@@ -18,6 +19,7 @@ import { TvshowsModule } from './tvshows/tvshows.module';
     BrowserModule,
     StoreModule,
     AppRoutingModule,
+    MaterialUiModule,
     ProfilesModule,
     TvshowsModule,
     CoreModule.forRoot(),
