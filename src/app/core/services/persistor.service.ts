@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store, Reducer } from 'redux';
-import Persistor from 'redux-persist';
+import {Persistor} from 'redux-persist';
 
 import {
   persistReducer,

@@ -19,19 +19,19 @@ import { TvDbService } from '../core/services';
     </header>
     <img *ngIf="show.posterUrl" class="poster" [src]="show.posterUrl">
     <div class="action-buttons">
-      <button
+      <button mat-raised-button color="primary"
         *ngIf="isShowSelected === false; else delete"
         (click)="handleAddButton(show.id)" class="add"
         >Add</button>
       <ng-template #delete>
-        <button
+        <button mat-raised-button color="warn"
           (click)="handleDeleteButton(show.id)" class="delete"
           >Delete</button>
        </ng-template>
     </div>
-    <div>
+    <p>
       <a routerLink="/">Go Back</a>
-    </div>
+    </p>
     <summary [innerHTML]="show.summary">
     </summary>
   </article>
