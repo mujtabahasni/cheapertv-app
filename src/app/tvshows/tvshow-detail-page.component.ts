@@ -14,9 +14,9 @@ import { TvDbService } from '../core/services';
 @Component({
   template: `
   <mat-card class="mw5 mw6-ns h-50 center pa3 show-details-card">
+      <img mat-card-mage *ngIf="show.posterUrl" [src]="show.posterUrl">
     <mat-card-title-group>
       <mat-card-title>{{ show.title }}</mat-card-title>
-      <img mat-card-sm-image *ngIf="show.posterUrl" [src]="show.posterUrl">
     </mat-card-title-group>
     <mat-card-content [innerHTML]="show.summary">
     </mat-card-content>
