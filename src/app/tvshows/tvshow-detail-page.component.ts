@@ -13,12 +13,15 @@ import { TvDbService } from '../core/services';
 
 @Component({
   template: `
-  <article class="card">
-    <header>
-      <h1>{{ show.title }}</h1>
-    </header>
-    <img *ngIf="show.posterUrl" class="poster" [src]="show.posterUrl">
-    <div class="action-buttons">
+  <mat-card class="mw5 mw6-ns h-50 center pa3 show-details-card">
+    <mat-card-title-group>
+      <mat-card-title>{{ show.title }}</mat-card-title>
+      <img mat-card-sm-image *ngIf="show.posterUrl" [src]="show.posterUrl">
+    </mat-card-title-group>
+    <mat-card-content [innerHTML]="show.summary">
+    </mat-card-content>
+    <mat-card-actions class="action-buttons">
+      <button mat-raised-button routerLink="/">Go Back</button>
       <button mat-raised-button color="primary"
         *ngIf="isShowSelected === false; else delete"
         (click)="handleAddButton(show.id)" class="add"
@@ -28,13 +31,8 @@ import { TvDbService } from '../core/services';
           (click)="handleDeleteButton(show.id)" class="delete"
           >Delete</button>
        </ng-template>
-    </div>
-    <p>
-      <a routerLink="/">Go Back</a>
-    </p>
-    <summary [innerHTML]="show.summary">
-    </summary>
-  </article>
+    </mat-card-actions>
+  </mat-card>
   `
 })
 export class TvShowDetailPageComponent implements OnInit {
