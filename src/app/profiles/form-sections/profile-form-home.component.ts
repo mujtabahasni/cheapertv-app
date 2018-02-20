@@ -34,12 +34,14 @@ import { Component, Input } from '@angular/core';
  <mat-card class="mw6 center ma2">
     <mat-card-title>Do you live in a house or an apartment building?:</mat-card-title>
     <section>
-    <div>
-      <mat-radio-button ngControl ngModel name="home" value="house">I live in a house.</mat-radio-button>
-    </div>
-    <div>
-      <mat-radio-button ngControl ngModel name="home" value="apartment">I live in an apartment building.</mat-radio-button>
-    </div>
+    <mat-radio-group name="home" ngControl ngModel>
+      <div>
+        <mat-radio-button value="house">I live in a house.</mat-radio-button>
+      </div>
+      <div>
+        <mat-radio-button value="apartment">I live in an apartment building.</mat-radio-button>
+      </div>
+    </mat-radio-group>
     </section>
   </mat-card>
   </form>

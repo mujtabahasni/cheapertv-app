@@ -11,9 +11,11 @@ import { Component, Input } from '@angular/core';
 <mat-card class="mw6 center ma2">
   <mat-card-title>Television Services</mat-card-title>
   <form [connect]="['profiles', 'form']">
+   <mat-radio-group name="tv" ngControl ngModel>
     <div *ngFor="let service of services.tv">
-      <mat-radio-button name="tv" [value]="service.id" ngControl ngModel>{{ service.name }}</mat-radio-button>
+      <mat-radio-button  [value]="service.id">{{ service.name }}</mat-radio-button>
     </div>
+    </mat-radio-group>
   </form>
   </mat-card>
 
