@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { NgReduxFormConnectModule } from '@angular-redux/form';
 
+import { MaterialUiModule } from '../material-ui/material-ui.module';
+
 import {
     ProfileFormViewComponent,
     ProfileFormComponent,
@@ -21,6 +23,7 @@ import {
   imports: [
     CommonModule,
     SharedModule,
+    MaterialUiModule,
     NgReduxFormConnectModule,
   ],
   declarations: [

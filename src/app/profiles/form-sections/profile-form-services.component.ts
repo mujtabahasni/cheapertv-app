@@ -8,26 +8,25 @@ import { Component, Input } from '@angular/core';
 <p>
     Please select all services that you are currently subscribing to.
 </p>
-<fieldset>
-  <legend>Television Services</legend>
+<mat-card class="mw6 center ma2">
+  <mat-card-title>Television Services</mat-card-title>
   <form [connect]="['profiles', 'form']">
     <div *ngFor="let service of services.tv">
-      <label>
-      <input name="tv" type="radio" [value]="service.id" ngControl ngModel>{{ service.name }}
-      </label>
+      <mat-radio-button name="tv" [value]="service.id" ngControl ngModel>{{ service.name }}</mat-radio-button>
     </div>
   </form>
-</fieldset>
-<fieldset>
-  <legend>Streaming Services</legend>
+  </mat-card>
+
+  <mat-card class="mw6 center ma2">
+  <mat-card-title>Streaming Services</mat-card-title>
   <form [connect]="['profiles', 'form', 'streaming']">
     <div *ngFor="let service of services.streaming">
       <label>
-        <input name="{{service.id}}" type="checkbox" ngModel ngControl>{{ service.name }}
+        <mat-checkbox name="{{service.id}}" ngModel ngControl>{{ service.name }}</mat-checkbox>
       </label>
     </div>
   </form>
-</fieldset>
+</mat-card>
 </section>
  `
 })

@@ -21,21 +21,24 @@ import { promise } from 'selenium-webdriver';
     ></app-tvshows-search-input>
 
   <section>
-      <h4><i>Search Results for "{{ selectors.searchQuery$ | async }}"</i></h4>
-    <div class="vh-50 w-100 overflow-x-scroll" *ngIf="(selectors.tvshows$ | async).length > 0">
-      <div class="h-50 nowrap justify">
-        <app-tvshow-poster *ngFor="let show of (selectors.tvshows$ | async)" [show]="show"></app-tvshow-poster>
+   <mat-card class="ma2">
+      <mat-card-title>Search Results for "{{ selectors.searchQuery$ | async }}"</mat-card-title>
+      <div class="w-100 overflow-x-scroll" *ngIf="(selectors.tvshows$ | async).length > 0">
+        <div class="nowrap justify">
+          <app-tvshow-poster *ngFor="let show of (selectors.tvshows$ | async)" [show]="show"></app-tvshow-poster>
+        </div>
       </div>
-    </div>
+    </mat-card>
   </section>
-  <mat-divider></mat-divider>
   <section>
-    <h4><i>Selected Shows</i></h4>
-    <div class="vh-50 w-100 overflow-x-scroll">
-      <div class="h-50 nowrap">
-        <app-tvshows-selected [selectedShows] = "selectedShows" ></app-tvshows-selected>
+   <mat-card class="ma2">
+    <mat-card-title>Selected Shows</mat-card-title>
+      <div class="w-100 overflow-x-scroll">
+        <div class="nowrap">
+          <app-tvshows-selected [selectedShows] = "selectedShows" ></app-tvshows-selected>
+        </div>
       </div>
-    </div>
+    </mat-card>
    </section>
   `
 })

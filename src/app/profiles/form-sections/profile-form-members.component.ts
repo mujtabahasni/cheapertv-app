@@ -4,14 +4,13 @@ import { Component, Input } from '@angular/core';
   selector: 'app-profile-form-members',
   template: `
 <section>
-  <fieldset>
-    <legend>Household Members</legend>
+ <mat-card class="mw6 center ma2">
+    <mat-card-title>Household Members</mat-card-title>
     <form [connect]="['profiles', 'form']">
-      <label for="membersNum">Additional household members: </label>
-      <select name="membersNum" ngControl ngModel>
-        <option selected disabled>0</option>
-        <option *ngFor="let n of [1,2,3,4,5,6,7,8,9,10]">{{n}}</option>
-      </select>
+      <mat-select placeholder="Additional household members:" name="membersNum" ngControl ngModel>
+        <mat-option selected disabled>0</mat-option>
+        <mat-option *ngFor="let n of [1,2,3,4,5,6,7,8,9,10]">{{n}}</mat-option>
+      </mat-select>
       <ol *ngIf="membersNum > '0'">
       <p>Enter nicknames of each household member, and their level of technical abilty</p>
         <li *ngFor="let n of membersRange" style="border: 1px solid gray; padding: 10px; margin:5px">
@@ -29,7 +28,7 @@ import { Component, Input } from '@angular/core';
         </li>
       </ol>
     </form>
-  </fieldset>
+    </mat-card>
 </section>
 `
 })
