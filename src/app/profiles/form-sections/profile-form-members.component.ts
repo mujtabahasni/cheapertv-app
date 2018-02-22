@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
     <form [connect]="['profiles', 'form']">
       <mat-select placeholder="Additional household members:" name="membersNum" ngControl ngModel>
         <mat-option selected disabled value="0">0</mat-option>
-        <mat-option *ngFor="let n of [1,2,3,4,5,6,7,8,9,10]" [value]="n">{{n}}</mat-option>
+        <mat-option *ngFor="let n of [1,2,3,4,5,6,7,8,9,10]" [value]="n">{{ n }}</mat-option>
       </mat-select>
       <div *ngIf="membersNum > '0'">
       <p>Enter nicknames of each household member, and their level of technical abilty</p>
