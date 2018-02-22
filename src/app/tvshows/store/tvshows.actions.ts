@@ -41,34 +41,12 @@ export interface TvShowSearchShows extends Action {
   payload: string;
 }
 
+export const searchShows = (payload: string): TvShowSearchShows => ({
+  type: SearchActionTypes.SEARCH_SHOWS_REQUESTED,
+  payload,
+});
 
-// Thunk style action creator, return type is 'any' otherwise typescript IDEA
-// will compain its not of type Action:
-export function searchShows(query: string, tvdb: TvDbService): any {
-  return (dispatch) => {
-    // Dispatch SEARCH_SHOWS_REQUESTED action to store, before making API call
-    dispatch({
-      type: SearchActionTypes.SEARCH_SHOWS_REQUESTED,
-      payload: query,
-    });
-
-    // Perform API call and if success, then dispatch SEARCH_SHOWS_SUCCESS action
-    tvdb.search(query)
-      .subscribe((results) => {
-        if (results.length > 0 ) {
-          dispatch(searchSuccess(results));
-        } else {
-          dispatch(searchError(`No results found for ${query}`));
-        }
-
-      },
-      (error) => {
-          dispatch(searchError(`A server error occured:  ${error}`));
-      });
-  };
-}
-
-export type ActionTypes =
+export type TvShowActions=
   | TvShowSearchSuccess
   | TvShowSearchShows
   | TvShowSearchFailure;

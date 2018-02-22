@@ -1,4 +1,4 @@
-import { ActionTypes, SearchActionTypes } from './tvshows.actions';
+import { TvShowActions, SearchActionTypes } from './tvshows.actions';
 import { TvShowData } from './tvshows.models';
 
 export interface State {
@@ -14,7 +14,7 @@ export const initialState: State = {
   errors: [],
 };
 
-export function reducer(state: State = initialState, action: ActionTypes) {
+export function reducer(state: State = initialState, action: TvShowActions) {
   switch (action.type) {
     case SearchActionTypes.SEARCH_SHOWS_REQUESTED:
       return {

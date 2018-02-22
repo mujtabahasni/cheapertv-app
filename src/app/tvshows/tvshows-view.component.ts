@@ -55,6 +55,6 @@ export class TvShowsViewComponent implements OnInit {
     });
   }
   search(query) {
-   this.store.dispatch(searchShows(query, this.tvdb));
+   this.store.dispatch(searchShows(query));
   }
 }
