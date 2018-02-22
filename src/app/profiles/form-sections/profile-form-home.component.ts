@@ -10,35 +10,40 @@ import { Component, Input } from '@angular/core';
     Please provide your location and details about your household. This will help
     us determine the availablility of Free-to-Air HD broadasters to you.
   </p>
-  <fieldset>
-    <legend>Location</legend>
-        <div>
-          <label for="city">Municipalitiy</label>
-          <select name="city" ngControl ngModel>
-            <option selected disabled>Please select</option>
-            <option *ngFor="let city of cities">{{ city }}</option>
-          </select>
-        </div>
-        <div>
-          <label for="address" >Address:</label>
-          <input name="address" type="text" ngControl ngModel>
-        </div>
-        <div>
-          <label for="postal">Postal Code:</label>
-          <input name="postal" type="text" maxlength="6" ngControl ngModel>
-        </div>
-  </fieldset>
-  <fieldset>
-    <legend>Do you live in a house or an apartment building?:</legend>
+ <mat-card class="mw6 center ma2">
+    <mat-card-title>Location</mat-card-title>
+     <div>
+        <mat-form-field>
+          <mat-select placeholder="Municipality" name="city" ngControl ngModel>
+            <mat-option selected disabled>Please select</mat-option>
+            <mat-option *ngFor="let city of cities">{{ city }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Address" name="address" type="text" ngControl ngModel>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input placeholder="Postal Code" matInput name="postal" type="text" maxlength="6" ngControl ngModel>
+        </mat-form-field>
+      </div>
+  </mat-card>
+ <mat-card class="mw6 center ma2">
+    <mat-card-title>Do you live in a house or an apartment building?:</mat-card-title>
     <section>
-    <div>
-      <label><input type="radio" ngControl ngModel name="home" value="house">I live in a house.</label>
-    </div>
-    <div>
-      <label><input type="radio" ngControl ngModel name="home" value="apartment">I live in an apartment building.</label>
-    </div>
+    <mat-radio-group name="home" ngControl ngModel>
+      <div>
+        <mat-radio-button value="house">I live in a house.</mat-radio-button>
+      </div>
+      <div>
+        <mat-radio-button value="apartment">I live in an apartment building.</mat-radio-button>
+      </div>
+    </mat-radio-group>
     </section>
-  </fieldset>
+  </mat-card>
   </form>
  </section>
 `

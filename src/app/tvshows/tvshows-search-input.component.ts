@@ -4,10 +4,14 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-tvshows-search-input',
   template: `
-  <form action="javascript:void(0)">
-    <input type="text" (change)="handleChange($event.target.value)" placeholder="Show Title">
-    <input type="submit">
-  </form>
+  <div class="center mw5">
+    <form action="javascript:void(0)">
+    <mat-icon>search</mat-icon>
+    <mat-form-field>
+      <input matInput type="text" (change)="handleChange($event.target.value)" placeholder="Search Title">
+      </mat-form-field>
+    </form>
+  </div>
   <div *ngIf="fetching">
     <progress value="80" max="100">fetching...</progress>
   </div>

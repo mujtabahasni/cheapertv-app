@@ -1,5 +1,11 @@
-<h1>TV APP</h1>
-<button (click)="purge()" >Flush Storage</button>
-<hr/>
-<a routerLink="/profile">Edit Profile</a>
+<mat-toolbar color="primary">
+  <button mat-icon-button routerLink="/"><mat-icon>menu</mat-icon></button>
+  <span class="flex-auto"></span>
+  <button mat-icon-button (click)="purge()" alt="Purge Storage">
+    <mat-icon>delete</mat-icon>
+  </button>
+  <button mat-icon-button routerLink="/profile" alt="Edit Profile">
+    <mat-icon>edit</mat-icon>
+  </button>
+</mat-toolbar>
 <router-outlet></router-outlet>

@@ -10,10 +10,13 @@ import {
   TvShowSelectors,
 } from '../tvshows';
 
+import { SharedModule } from '../shared/shared.module';
+
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
+    SharedModule,
   ],
   declarations: [
     TvShowsViewComponent,
