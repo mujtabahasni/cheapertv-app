@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { MaterialUiModule } from '../material-ui/material-ui.module';
 import {
   TvShowsViewComponent,
   TvShowsSearchInputComponent,
@@ -11,11 +10,13 @@ import {
   TvShowSelectors,
 } from '../tvshows';
 
+import { SharedModule } from '../shared/shared.module';
+
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    MaterialUiModule,
+    SharedModule,
   ],
   declarations: [
     TvShowsViewComponent,
