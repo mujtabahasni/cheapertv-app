@@ -14,7 +14,7 @@ import { TvDbService } from '../core/services';
 @Component({
   template: `
   <mat-card class="mw5 mw6-ns h-50 center pa3 show-details-card">
-      <img mat-card-mage *ngIf="show.posterUrl" [src]="show.posterUrl">
+      <img mat-card-image *ngIf="show.posterUrl" [src]="show.posterUrl">
     <mat-card-title-group>
       <mat-card-title>{{ show.title }}</mat-card-title>
     </mat-card-title-group>
@@ -43,12 +43,10 @@ export class TvShowDetailPageComponent implements OnInit {
     private store: NgRedux<RootState>,
     private route: ActivatedRoute,
     private tvdb: TvDbService,
-    private location: Location,
   ) {}
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-
     ProfileSelectors.selectedShows$.subscribe((selectedShows) => {
       this.isShowSelected = (indexOf(Number(id), selectedShows) !== -1);
     });
