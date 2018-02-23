@@ -16,10 +16,10 @@ describe('The Persistor Service',  () => {
         state = {
           ...state,
           action
-        }
+        };
       }
       return state;
-    }
+    };
 
     store = createStore(reducer);
   });

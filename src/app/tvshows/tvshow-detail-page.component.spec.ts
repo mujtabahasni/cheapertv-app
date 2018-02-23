@@ -18,17 +18,17 @@ describe('Tv Show Details Page Component', () => {
 
   let comp: TvShowDetailPageComponent;
   let fixture: ComponentFixture<TvShowDetailPageComponent>;
-  let data:TvShowData = {
+  const data: TvShowData = {
     id: '101',
     title: 'notitle',
-    summary:'nosummary',
+    summary: 'nosummary',
     posterUrl: 'about://blank',
    };
   let selectorStub;
   // Service Stubs
   const store = {
-    dispatch: ( action ) => { console.log(`stub-store ${action}`)}
-  }
+    dispatch: ( action ) => { }
+  };
 
   const route = {
     snapshot: {
@@ -36,7 +36,7 @@ describe('Tv Show Details Page Component', () => {
         get: (param) => data.id
       }
     }
-  }
+  };
 
   const tvdb = {
     details: (id) => ({
@@ -44,7 +44,7 @@ describe('Tv Show Details Page Component', () => {
         then: (cb) => cb(data)
       })
     })
-  }
+  };
 
 
   beforeEach(() => {
@@ -80,7 +80,7 @@ describe('Tv Show Details Page Component', () => {
     const de = fixture.debugElement.query(By.css('mat-card-title'));
     const el = de.nativeElement;
     expect(el.textContent).toContain(data.title);
-  })
+  });
 
   it('should display the summary content from the supplied show info', () => {
     selectorStub.next([]);
@@ -88,7 +88,7 @@ describe('Tv Show Details Page Component', () => {
     const de = fixture.debugElement.query(By.css('mat-card-content'));
     const el = de.nativeElement;
     expect(el.textContent).toContain(data.summary);
-  })
+  });
 
   it('should display the poster image from the supplied show info', () => {
     selectorStub.next([]);
@@ -96,7 +96,7 @@ describe('Tv Show Details Page Component', () => {
     const de = fixture.debugElement.query(By.css('[mat-card-image]'));
     const el = de.nativeElement;
     expect(el.src).toContain(data.posterUrl);
-  })
+  });
 
   it('should display the Add button if the supplied show is not selected', () => {
     selectorStub.next([]);
@@ -104,7 +104,7 @@ describe('Tv Show Details Page Component', () => {
     const de = fixture.debugElement.query(By.css('[color="primary"]'));
     const el = de.nativeElement;
     expect(el.textContent).toContain('Add');
-  })
+  });
 
   /* TODO: Fix this test case!
   it('should display the Delete button if the supplied show is selected', () => {

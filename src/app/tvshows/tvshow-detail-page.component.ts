@@ -48,7 +48,6 @@ export class TvShowDetailPageComponent implements OnInit {
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     ProfileSelectors.selectedShows$.subscribe((selectedShows) => {
-      console.log({selectedShows})
       this.isShowSelected = (indexOf(Number(id), selectedShows) !== -1);
     });
 

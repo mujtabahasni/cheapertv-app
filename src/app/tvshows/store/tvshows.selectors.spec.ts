@@ -11,20 +11,20 @@ describe('TvShowSelectors', () => {
   describe('getSortedResults()', () => {
     it('should return a list of search results sorted by title', () => {
       state.tvshows.searchResults = [
-        {id: '1', title:'c'},
-        {id: '1', title:'d'},
-        {id: '1', title:'b'},
-        {id: '1', title:'a'},
-        {id: '1', title:'d'},
+        {id: '1', title: 'c'},
+        {id: '1', title: 'd'},
+        {id: '1', title: 'b'},
+        {id: '1', title: 'a'},
+        {id: '1', title: 'd'},
       ];
 
       expect(getSortedResults(state)).toEqual([
-        {id: '1', title:'a'},
-        {id: '1', title:'b'},
-        {id: '1', title:'c'},
-        {id: '1', title:'d'},
-        {id: '1', title:'d'},
-      ])
+        {id: '1', title: 'a'},
+        {id: '1', title: 'b'},
+        {id: '1', title: 'c'},
+        {id: '1', title: 'd'},
+        {id: '1', title: 'd'},
+      ]);
     });
   });
 
