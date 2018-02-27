@@ -9,7 +9,7 @@ import { RootState } from '../store';
 import { ProfileSelectors } from '../profiles/store';
 import { addToSelectedShows, removeFromSelectedShows } from '../profiles/store/profile.actions';
 import { TvShowData } from './store/tvshows.models';
-import { TvDbService } from '../core/services';
+import { TvDbService, OtaService } from '../core/services';
 
 @Component({
   template: `
@@ -18,6 +18,11 @@ import { TvDbService } from '../core/services';
     <mat-card-title-group>
       <mat-card-title>{{ show.title }}</mat-card-title>
     </mat-card-title-group>
+      <div *ngIf="otaStations.length > 0">
+        <mat-chip-list>
+        <mat-chip *ngFor="let station of otaStations">{{ station.name }}</mat-chip>
+        </mat-chip-list>
+      </div>
     <mat-card-content [innerHTML]="show.summary">
     </mat-card-content>
     <mat-card-actions class="action-buttons">
@@ -38,11 +43,13 @@ import { TvDbService } from '../core/services';
 export class TvShowDetailPageComponent implements OnInit {
   show: TvShowData = {id: 'noid', title: 'no title', summary: 'no summary'};
   isShowSelected = false;
+  otaStations = [];
 
   constructor (
     private store: NgRedux<RootState>,
     private route: ActivatedRoute,
     private tvdb: TvDbService,
+    private ota: OtaService,
   ) {}
 
   ngOnInit() {
@@ -53,7 +60,11 @@ export class TvShowDetailPageComponent implements OnInit {
 
     this.tvdb.details(id)
       .toPromise()
-      .then( show => this.show = show );
+      .then( show =>  {
+        this.show = show;
+        this.otaStations = this.ota.findStationsByShowTitle(show.title);
+        console.log(this.otaStations);
+      });
   }
 
   handleAddButton(showId) {

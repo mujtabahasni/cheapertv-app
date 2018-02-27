@@ -36,7 +36,7 @@ export class OtaService {
 
   findStationsByShowTitle(title: string): Station[] {
     const stationsFound: Station[] = [];
-    let numStationsFound = stringToNum(title, 0, 3);
+    let numStationsFound = stringToNum(title, 1, 3);
 
     while ( numStationsFound-- ) {
       const idx = stringToNum(title, numStationsFound, stations.length);

@@ -8,7 +8,7 @@ import { MockNgRedux } from '@angular-redux/store/testing';
 
 import { RootState, initialRootState } from '../store';
 import { TvShowDetailPageComponent } from './tvshow-detail-page.component';
-import { TvDbService } from '../core/services/tvdb.service';
+import { TvDbService, OtaService } from '../core/services';
 import { TvShowData } from './store/tvshows.models';
 
 import { MaterialUiModule } from '../material-ui/material-ui.module';
@@ -46,6 +46,8 @@ describe('Tv Show Details Page Component', () => {
     })
   };
 
+  // Service is fake anyway...
+  const ota = new OtaService();
 
   beforeEach(() => {
 
@@ -58,6 +60,7 @@ describe('Tv Show Details Page Component', () => {
         {provide: NgRedux, useValue: MockNgRedux.getInstance},
         {provide: ActivatedRoute, useValue: route},
         {provide: TvDbService, useValue: tvdb},
+        {provide: OtaService, useValue: ota},
       ],
 
       declarations: [ TvShowDetailPageComponent ]
