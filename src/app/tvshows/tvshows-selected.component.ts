@@ -7,7 +7,6 @@ import { searchShows } from './store/tvshows.actions';
 import { TvShowData } from './store/tvshows.models';
 
 import { ProfileSelectors } from '../profiles/store';
-import { Profile } from 'selenium-webdriver/firefox';
 
 @Component({
   selector: 'app-tvshows-selected',
