@@ -2,7 +2,6 @@ import { Action } from 'redux';
 import { ProfileFormAntennaComponent } from '../form-sections/index';
 
 import { PersistorService } from '../../core/services';
-import { Profile } from 'selenium-webdriver/firefox';
 
 export enum ProfileActionTypes {
   PROFILE_CLEAR = 'profile/clear',
