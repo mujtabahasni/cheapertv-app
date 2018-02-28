@@ -9,7 +9,6 @@ import { searchShows } from './store/tvshows.actions';
 import { TvShowSelectors } from './store/tvshows.selectors';
 import { ProfileSelectors } from '../profiles/store';
 import { TvShowData } from './store/tvshows.models';
-import { promise } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-tvshows-view',

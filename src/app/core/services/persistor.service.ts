@@ -7,7 +7,7 @@ import {
   persistStore,
 } from 'redux-persist';
 
-import storage from 'redux-persist/es/storage';
+import storage from 'redux-persist/lib/storage';
 
 @Injectable()
 export class PersistorService {
@@ -20,7 +20,7 @@ export class PersistorService {
   persistReducer(reducer: Reducer<any>): Reducer<any> {
     const config = {
       key: 'redux-persist',
-      storage,
+      storage: storage,
     };
 
     // Note that persistReducer() is not the same as this.persistReducer()
