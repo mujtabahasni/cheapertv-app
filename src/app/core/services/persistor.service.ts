@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Store, Reducer } from 'redux';
-import {Persistor} from 'redux-persist';
+import { Persistor } from 'redux-persist';
 
 import {
   persistReducer,
   persistStore,
 } from 'redux-persist';
 
-import storage from 'redux-persist/es/storage';
+import storage from 'redux-persist/lib/storage';
 
 @Injectable()
 export class PersistorService {
@@ -20,9 +20,10 @@ export class PersistorService {
   persistReducer(reducer: Reducer<any>): Reducer<any> {
     const config = {
       key: 'redux-persist',
-      storage,
+      storage: storage,
     };
 
+    // Note that persistReducer() is not the same as this.persistReducer()
     this._reducer = persistReducer(config, reducer);
 
     return this._reducer;

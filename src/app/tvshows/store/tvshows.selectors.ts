@@ -17,15 +17,15 @@ export class TvShowSelectors {
  decorator
  */
 
-function getSortedResults(state: RootState) {
+export function getSortedResults(state: RootState) {
   return state.tvshows.searchResults.sort(sortShowsByTitle);
 }
 
-function getIsFetching(state: RootState) {
+export function getIsFetching(state: RootState) {
   return state.tvshows.isFetching;
 }
 
-function getErrors(state: RootState) {
+export function getErrors(state: RootState) {
   return state.tvshows.errors;
 }
 

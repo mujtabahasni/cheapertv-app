@@ -6,7 +6,6 @@ import { Epic } from 'redux-observable';
 import { RootState } from '../../store/index';
 import { TvShowActions, SearchActionTypes, searchSuccess, TvShowSearchShows } from './tvshows.actions';
 import { TvDbService } from '../../core/services';
-import { Profile } from 'selenium-webdriver/firefox';
 
 export const searchShows: Epic<TvShowActions, RootState> =
   (action$, store, { tvdb }: {tvdb: TvDbService }) =>

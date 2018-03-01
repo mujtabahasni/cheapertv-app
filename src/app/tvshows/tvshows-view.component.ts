@@ -9,7 +9,6 @@ import { searchShows } from './store/tvshows.actions';
 import { TvShowSelectors } from './store/tvshows.selectors';
 import { ProfileSelectors } from '../profiles/store';
 import { TvShowData } from './store/tvshows.models';
-import { promise } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-tvshows-view',
@@ -30,7 +29,8 @@ import { promise } from 'selenium-webdriver';
       </div>
     </mat-card>
   </section>
-  <section>
+
+  <section *ngIf = "selectedShows && selectedShows.length > 0">
    <mat-card class="ma2">
     <mat-card-title>Selected Shows</mat-card-title>
       <div class="w-100 overflow-x-scroll">

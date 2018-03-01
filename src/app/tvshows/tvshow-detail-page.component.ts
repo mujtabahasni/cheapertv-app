@@ -9,15 +9,20 @@ import { RootState } from '../store';
 import { ProfileSelectors } from '../profiles/store';
 import { addToSelectedShows, removeFromSelectedShows } from '../profiles/store/profile.actions';
 import { TvShowData } from './store/tvshows.models';
-import { TvDbService } from '../core/services';
+import { TvDbService, OtaService } from '../core/services';
 
 @Component({
   template: `
   <mat-card class="mw5 mw6-ns h-50 center pa3 show-details-card">
-      <img mat-card-mage *ngIf="show.posterUrl" [src]="show.posterUrl">
+      <img mat-card-image *ngIf="show.posterUrl" [src]="show.posterUrl">
     <mat-card-title-group>
       <mat-card-title>{{ show.title }}</mat-card-title>
     </mat-card-title-group>
+      <div *ngIf="otaStations.length > 0">
+        <mat-chip-list>
+        <mat-chip *ngFor="let station of otaStations">{{ station.name }}</mat-chip>
+        </mat-chip-list>
+      </div>
     <mat-card-content [innerHTML]="show.summary">
     </mat-card-content>
     <mat-card-actions class="action-buttons">
@@ -38,24 +43,28 @@ import { TvDbService } from '../core/services';
 export class TvShowDetailPageComponent implements OnInit {
   show: TvShowData = {id: 'noid', title: 'no title', summary: 'no summary'};
   isShowSelected = false;
+  otaStations = [];
 
   constructor (
     private store: NgRedux<RootState>,
     private route: ActivatedRoute,
     private tvdb: TvDbService,
-    private location: Location,
+    private ota: OtaService,
   ) {}
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-
     ProfileSelectors.selectedShows$.subscribe((selectedShows) => {
       this.isShowSelected = (indexOf(Number(id), selectedShows) !== -1);
     });
 
     this.tvdb.details(id)
       .toPromise()
-      .then( show => this.show = show );
+      .then( show =>  {
+        this.show = show;
+        this.otaStations = this.ota.findStationsByShowTitle(show.title);
+        console.log(this.otaStations);
+      });
   }
 
   handleAddButton(showId) {

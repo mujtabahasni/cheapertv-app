@@ -2,7 +2,7 @@ import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
-import { TvDbService, PersistorService } from './services';
+import { TvDbService, PersistorService, OtaService } from './services';
 
 @NgModule({
   imports: [
@@ -22,7 +22,7 @@ export class CoreModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: CoreModule,
-      providers: [TvDbService, PersistorService],
+      providers: [TvDbService, PersistorService, OtaService],
     };
   }
 }
