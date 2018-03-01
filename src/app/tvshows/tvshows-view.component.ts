@@ -29,7 +29,8 @@ import { TvShowData } from './store/tvshows.models';
       </div>
     </mat-card>
   </section>
-  <section>
+
+  <section *ngIf = "selectedShows && selectedShows.length > 0">
    <mat-card class="ma2">
     <mat-card-title>Selected Shows</mat-card-title>
       <div class="w-100 overflow-x-scroll">
